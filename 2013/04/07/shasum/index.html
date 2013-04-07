@@ -6,19 +6,47 @@
   <title>shasum | IF NOT</title>
   <meta name="author" content="Casear Chu">
   
-  <meta name="description" content="######################################################################## 100.0%-bash: shasum：命令找不到Checksums do not match.Binary download failed, trying source.Additional options while compiling: ######################################################################## 100.0% 
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+######################################################################## 100.0%
+
+-bash: shasum：命令找不到
+Checksums do not match.
+Binary download failed, trying source.
+Additional options while compiling: 
+
+######################################################################## 100.0% 
 
 幾次在CentOS用nvm安裝node.js都出現這個問題，來記錄一下，問題出在預設沒有shasum這個指令
+
 所以可以先下
+
   yum whatprovides &amp;#39;*bin/shasum&amp;#39;
+
 尋找一下到底要裝什麼
 結果
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
   Loaded plugins: fastestmirror, security
   Loading mirror speeds from cached hostfile
-  * base: ftp.jaist.ac.jp
-  * epel: ftp.tsukuba.wide.ad.jp
-  * extras: ftp.jaist.ac.jp
-  * updates: ftp.jaist.ac.jp
+  \* base: ftp.jaist.ac.jp
+  \* epel: ftp.tsukuba.wide.ad.jp
+  \* extras: ftp.jaist.ac.jp
+  \* updates: ftp.jaist.ac.jp
   1:perl-Digest-SHA-5.47-127.el6.x86_64 : Perl extension for SHA-1/224/256/384/512
   Repo        : base
   Matched from:
@@ -83,24 +111,52 @@
     </header>
     <div class="entry">
       
-        <p>######################################################################## 100.0%<br>-bash: shasum：命令找不到<br>Checksums do not match.<br>Binary download failed, trying source.<br>Additional options while compiling: <br>######################################################################## 100.0%</p> 
+        <figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span> <span class="number">100.0</span>%
 
-<p>幾次在CentOS用nvm安裝node.js都出現這個問題，來記錄一下，問題出在預設沒有shasum這個指令</p>
-<p>所以可以先下</p>
-<p>  yum whatprovides &#39;*bin/shasum&#39;</p>
-<p>尋找一下到底要裝什麼
-結果</p>
-<blockquote><p>  Loaded plugins: fastestmirror, security
+-bash: shasum：命令找不到
+Checksums <span class="keyword">do</span> <span class="keyword">not</span> match.
+Binary download failed, trying source.
+Additional options <span class="keyword">while</span> compiling: 
+
+<span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span> <span class="number">100.0</span>% 
+</pre></td></tr></table></figure>
+幾次在CentOS用nvm安裝node.js都出現這個問題，來記錄一下，問題出在預設沒有shasum這個指令
+
+所以可以先下
+
+  yum whatprovides &#39;*bin/shasum&#39;
+
+尋找一下到底要裝什麼
+結果
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>  Loaded plugins: fastestmirror, security
   Loading mirror speeds from cached hostfile
-  * base: ftp.jaist.ac.jp
-  * epel: ftp.tsukuba.wide.ad.jp
-  * extras: ftp.jaist.ac.jp
-  * updates: ftp.jaist.ac.jp
-  1:perl-Digest-SHA-5.47-127.el6.x86_64 : Perl extension for SHA-1/224/256/384/512
+  \* base: ftp<span class="variable">.jaist</span><span class="variable">.ac</span><span class="variable">.jp</span>
+  \* epel: ftp<span class="variable">.tsukuba</span><span class="variable">.wide</span><span class="variable">.ad</span><span class="variable">.jp</span>
+  \* extras: ftp<span class="variable">.jaist</span><span class="variable">.ac</span><span class="variable">.jp</span>
+  \* updates: ftp<span class="variable">.jaist</span><span class="variable">.ac</span><span class="variable">.jp</span>
+  <span class="number">1</span>:perl-Digest-SHA-<span class="number">5.47</span>-<span class="number">127.</span>el6<span class="variable">.x86_64</span> : Perl extension <span class="keyword">for</span> SHA-<span class="number">1</span>/<span class="number">224</span>/<span class="number">256</span>/<span class="number">384</span>/<span class="number">512</span>
   Repo        : base
   Matched from:
-  Filename    : /usr/bin/shasum</p>
-</blockquote>
+  Filename    : /usr/bin/shasum
+</pre></td></tr></table></figure>
 
 <p>  1:perl-Digest-SHA-5.47-127.el6.x86_64</font> : Perl extension for SHA-1/224/256/384/512
   Repo        : installed
