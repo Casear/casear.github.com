@@ -80,8 +80,6 @@ Additional options <span class="keyword">while</span> compiling:
 
 所以可以先下
 
-  yum whatprovides &#39;*bin/shasum&#39;
-
 尋找一下到底要裝什麼
 結果
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
@@ -94,22 +92,31 @@ Additional options <span class="keyword">while</span> compiling:
 8
 9
 10
-</pre></td><td class="code"><pre>  Loaded plugins: fastestmirror, security
-  Loading mirror speeds from cached hostfile
-  \* base: ftp<span class="variable">.jaist</span><span class="variable">.ac</span><span class="variable">.jp</span>
-  \* epel: ftp<span class="variable">.tsukuba</span><span class="variable">.wide</span><span class="variable">.ad</span><span class="variable">.jp</span>
-  \* extras: ftp<span class="variable">.jaist</span><span class="variable">.ac</span><span class="variable">.jp</span>
-  \* updates: ftp<span class="variable">.jaist</span><span class="variable">.ac</span><span class="variable">.jp</span>
-  <span class="number">1</span>:perl-Digest-SHA-<span class="number">5.47</span>-<span class="number">127.</span>el6<span class="variable">.x86_64</span> : Perl extension <span class="keyword">for</span> SHA-<span class="number">1</span>/<span class="number">224</span>/<span class="number">256</span>/<span class="number">384</span>/<span class="number">512</span>
-  Repo        : base
-  Matched from:
-  Filename    : /usr/bin/shasum
+11
+12
+</pre></td><td class="code"><pre>  yum whatprovides <span class="string">'*bin/shasum'</span>
+
+  <span class="constant">Loaded</span> <span class="symbol">plugins:</span> fastestmirror, security
+  <span class="constant">Loading</span> mirror speeds from cached hostfile
+  * <span class="symbol">base:</span> ftp.jaist.ac.jp
+  * <span class="symbol">epel:</span> ftp.tsukuba.wide.ad.jp
+  * <span class="symbol">extras:</span> ftp.jaist.ac.jp
+  * <span class="symbol">updates:</span> ftp.jaist.ac.jp
+  <span class="number">1</span><span class="symbol">:perl-Digest-SHA-</span><span class="number">5.47</span>-<span class="number">127</span>.el6.x86_64 <span class="symbol">:</span> <span class="constant">Perl</span> extension <span class="keyword">for</span> <span class="constant">SHA</span>-<span class="number">1</span>/<span class="number">224</span>/<span class="number">256</span>/<span class="number">384</span>/<span class="number">512</span>
+  <span class="constant">Repo</span>        <span class="symbol">:</span> base
+  <span class="constant">Matched</span> <span class="symbol">from:</span>
+  <span class="constant">Filename</span>    <span class="symbol">:</span> /usr/bin/shasum
+</pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>  <span class="number">1</span><span class="symbol">:perl-Digest-SHA-</span><span class="number">5.47</span>-<span class="number">127</span>.el6.x86_64&lt;<span class="regexp">/font&gt; : Perl extension for SHA-1/</span><span class="number">224</span>/<span class="number">256</span>/<span class="number">384</span>/<span class="number">512</span>
+  <span class="constant">Repo</span>        <span class="symbol">:</span> installed
+  <span class="constant">Matched</span> <span class="symbol">from:</span>
+  <span class="constant">Filename</span>    <span class="symbol">:</span> /usr/bin/shasum
 </pre></td></tr></table></figure>
 
-<p>  1:perl-Digest-SHA-5.47-127.el6.x86_64</font> : Perl extension for SHA-1/224/256/384/512
-  Repo        : installed
-  Matched from:
-  Filename    : /usr/bin/shasum</p>
 <p>安裝完即可結案</p>
 
       
