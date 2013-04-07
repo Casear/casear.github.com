@@ -49,6 +49,65 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-04-07T12:43:42.000Z"><a href="/2013/04/07/shasum/">Apr 7 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/04/07/shasum/">shasum</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>######################################################################## 100.0%<br>-bash: shasum：命令找不到<br>Checksums do not match.<br>Binary download failed, trying source.<br>Additional options while compiling: <br>######################################################################## 100.0%</p> 
+
+<p>幾次在CentOS用nvm安裝node.js都出現這個問題，來記錄一下，問題出在預設沒有shasum這個指令</p>
+<p>所以可以先下</p>
+<p>  yum whatprovides &#39;*bin/shasum&#39;</p>
+<p>尋找一下到底要裝什麼
+結果</p>
+<blockquote><p>  Loaded plugins: fastestmirror, security
+  Loading mirror speeds from cached hostfile
+  * base: ftp.jaist.ac.jp
+  * epel: ftp.tsukuba.wide.ad.jp
+  * extras: ftp.jaist.ac.jp
+  * updates: ftp.jaist.ac.jp
+  1:perl-Digest-SHA-5.47-127.el6.x86_64 : Perl extension for SHA-1/224/256/384/512
+  Repo        : base
+  Matched from:
+  Filename    : /usr/bin/shasum</p>
+</blockquote>
+
+<p>  1:perl-Digest-SHA-5.47-127.el6.x86_64</font> : Perl extension for SHA-1/224/256/384/512
+  Repo        : installed
+  Matched from:
+  Filename    : /usr/bin/shasum</p>
+<p>安裝完即可結案</p>
+
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/04/07/shasum/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-04-03T05:46:31.000Z"><a href="/2013/04/03/jquery-datepicker/">Apr 3 2013</a></time>
       
       
@@ -395,17 +454,17 @@
         <img src="http://farm4.static.flickr.com/3414/3440953098_1f506c09e4_b.jpg">
 
 <p>MS的<a href="http://casear.blogspot.com/2009/01/blog-post_7126.html">尾牙</a>已經過了快三個月了，得第三名的獎金終於到手，大家去胡同大吃大喝，當作慶功宴，以下是簡短介紹一下今晚的實況<br>今晚的菜單
-1.烤牛舌
-2.味噌雞
-3.松阪豬
-4.牛肋條
-5.杏鮑菇
-6.牛五花
-7.和牛
-8.鮭魚茶泡飯
-9.鮭魚飯糰
-10.起司地瓜
-11.巧克力起司香蕉</p>
+  1.烤牛舌
+  2.味噌雞
+  3.松阪豬
+  4.牛肋條
+  5.杏鮑菇
+  6.牛五花
+  7.和牛
+  8.鮭魚茶泡飯
+  9.鮭魚飯糰
+  10.起司地瓜
+  11.巧克力起司香蕉</p>
 <p>以上菜單，等一下會挑重點介紹
 首先要介紹今晚的烤手，說自己像媽媽的Riva姐，不要懷疑也就是尾牙喝到趴在地上的那個Riva姐</p>
 <img src="http://farm4.static.flickr.com/3545/3440953424_f38b37c3a1_b.jpg">
