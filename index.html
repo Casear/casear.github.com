@@ -49,92 +49,6 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-04-07T12:43:42.000Z"><a href="/2013/04/07/shasum/">Apr 7 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/04/07/shasum/">shasum</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-</pre></td><td class="code"><pre><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span> <span class="number">100.0</span>%
-
--bash: shasum：命令找不到
-Checksums <span class="keyword">do</span> <span class="keyword">not</span> match.
-Binary download failed, trying source.
-Additional options <span class="keyword">while</span> compiling: 
-
-<span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span> <span class="number">100.0</span>% 
-</pre></td></tr></table></figure>
-幾次在CentOS用nvm安裝node.js都出現這個問題，來記錄一下，問題出在預設沒有shasum這個指令
-
-所以可以先下
-
-尋找一下到底要裝什麼
-結果
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-</pre></td><td class="code"><pre>  yum whatprovides <span class="string">'*bin/shasum'</span>
-
-  <span class="constant">Loaded</span> <span class="symbol">plugins:</span> fastestmirror, security
-  <span class="constant">Loading</span> mirror speeds from cached hostfile
-  * <span class="symbol">base:</span> ftp.jaist.ac.jp
-  * <span class="symbol">epel:</span> ftp.tsukuba.wide.ad.jp
-  * <span class="symbol">extras:</span> ftp.jaist.ac.jp
-  * <span class="symbol">updates:</span> ftp.jaist.ac.jp
-  <span class="number">1</span><span class="symbol">:perl-Digest-SHA-</span><span class="number">5.47</span>-<span class="number">127</span>.el6.x86_64 <span class="symbol">:</span> <span class="constant">Perl</span> extension <span class="keyword">for</span> <span class="constant">SHA</span>-<span class="number">1</span>/<span class="number">224</span>/<span class="number">256</span>/<span class="number">384</span>/<span class="number">512</span>
-  <span class="constant">Repo</span>        <span class="symbol">:</span> base
-  <span class="constant">Matched</span> <span class="symbol">from:</span>
-  <span class="constant">Filename</span>    <span class="symbol">:</span> /usr/bin/shasum
-</pre></td></tr></table></figure>
-
-
-<p>安裝完即可結案</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/04/07/shasum/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
         <time datetime="2013-04-03T05:46:31.000Z"><a href="/2013/04/03/jquery-datepicker/">Apr 3 2013</a></time>
       
       
@@ -217,6 +131,92 @@ Additional options <span class="keyword">while</span> compiling:
         
           <div class="alignleft">
             <a href="/2013/03/28/sublime-indent-setting/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-11-22T12:43:42.000Z"><a href="/2012/11/22/shasum/">Nov 22 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2012/11/22/shasum/">shasum</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span> <span class="number">100.0</span>%
+
+-bash: shasum：命令找不到
+Checksums <span class="keyword">do</span> <span class="keyword">not</span> match.
+Binary download failed, trying source.
+Additional options <span class="keyword">while</span> compiling: 
+
+<span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span> <span class="number">100.0</span>% 
+</pre></td></tr></table></figure>
+幾次在CentOS用nvm安裝node.js都出現這個問題，來記錄一下，問題出在預設沒有shasum這個指令
+
+所以可以先下
+
+尋找一下到底要裝什麼
+結果
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre>  yum whatprovides <span class="string">'*bin/shasum'</span>
+
+  <span class="constant">Loaded</span> <span class="symbol">plugins:</span> fastestmirror, security
+  <span class="constant">Loading</span> mirror speeds from cached hostfile
+  * <span class="symbol">base:</span> ftp.jaist.ac.jp
+  * <span class="symbol">epel:</span> ftp.tsukuba.wide.ad.jp
+  * <span class="symbol">extras:</span> ftp.jaist.ac.jp
+  * <span class="symbol">updates:</span> ftp.jaist.ac.jp
+  <span class="number">1</span><span class="symbol">:perl-Digest-SHA-</span><span class="number">5.47</span>-<span class="number">127</span>.el6.x86_64 <span class="symbol">:</span> <span class="constant">Perl</span> extension <span class="keyword">for</span> <span class="constant">SHA</span>-<span class="number">1</span>/<span class="number">224</span>/<span class="number">256</span>/<span class="number">384</span>/<span class="number">512</span>
+  <span class="constant">Repo</span>        <span class="symbol">:</span> base
+  <span class="constant">Matched</span> <span class="symbol">from:</span>
+  <span class="constant">Filename</span>    <span class="symbol">:</span> /usr/bin/shasum
+</pre></td></tr></table></figure>
+
+
+<p>安裝完即可結案</p>
+
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2012/11/22/shasum/#more" class="more-link">Read More</a>
           </div>
         
         
