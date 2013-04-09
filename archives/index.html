@@ -162,7 +162,7 @@
     </header>
     <div class="entry">
       
-        <figure class="highlight"><table><tr><td class="gutter"><pre>1
+        <figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -170,14 +170,14 @@
 6
 7
 8
-</pre></td><td class="code"><pre><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span> <span class="number">100.0</span>%
+</pre></td><td class="code"><pre>######################################################################## 100.0%
 
 -bash: shasum：命令找不到
-Checksums <span class="keyword">do</span> <span class="keyword">not</span> match.
+Checksums do not match.
 Binary download failed, trying source.
-Additional options <span class="keyword">while</span> compiling: 
+Additional options while compiling: 
 
-<span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span> <span class="number">100.0</span>% 
+######################################################################## 100.0% 
 </pre></td></tr></table></figure>
 幾次在CentOS用nvm安裝node.js都出現這個問題，來記錄一下，問題出在預設沒有shasum這個指令
 
@@ -185,7 +185,7 @@ Additional options <span class="keyword">while</span> compiling:
 
 尋找一下到底要裝什麼
 結果
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -197,18 +197,18 @@ Additional options <span class="keyword">while</span> compiling:
 10
 11
 12
-</pre></td><td class="code"><pre>  yum whatprovides <span class="string">'*bin/shasum'</span>
+</pre></td><td class="code"><pre>  yum whatprovides '*bin/shasum'
 
-  <span class="constant">Loaded</span> <span class="symbol">plugins:</span> fastestmirror, security
-  <span class="constant">Loading</span> mirror speeds from cached hostfile
-  * <span class="symbol">base:</span> ftp.jaist.ac.jp
-  * <span class="symbol">epel:</span> ftp.tsukuba.wide.ad.jp
-  * <span class="symbol">extras:</span> ftp.jaist.ac.jp
-  * <span class="symbol">updates:</span> ftp.jaist.ac.jp
-  <span class="number">1</span><span class="symbol">:perl-Digest-SHA-</span><span class="number">5.47</span>-<span class="number">127</span>.el6.x86_64 <span class="symbol">:</span> <span class="constant">Perl</span> extension <span class="keyword">for</span> <span class="constant">SHA</span>-<span class="number">1</span>/<span class="number">224</span>/<span class="number">256</span>/<span class="number">384</span>/<span class="number">512</span>
-  <span class="constant">Repo</span>        <span class="symbol">:</span> base
-  <span class="constant">Matched</span> <span class="symbol">from:</span>
-  <span class="constant">Filename</span>    <span class="symbol">:</span> /usr/bin/shasum
+  Loaded plugins: fastestmirror, security
+  Loading mirror speeds from cached hostfile
+  * base: ftp.jaist.ac.jp
+  * epel: ftp.tsukuba.wide.ad.jp
+  * extras: ftp.jaist.ac.jp
+  * updates: ftp.jaist.ac.jp
+  1:perl-Digest-SHA-5.47-127.el6.x86_64 : Perl extension for SHA-1/224/256/384/512
+  Repo        : base
+  Matched from:
+  Filename    : /usr/bin/shasum
 </pre></td></tr></table></figure>
 
 
@@ -586,13 +586,9 @@ Additional options <span class="keyword">while</span> compiling:
   
     <li><a href="/tags/Technology/">Technology</a><small>2</small></li>
   
-    <li><a href="/tags/Traval/">Traval</a><small>1</small></li>
-  
     <li><a href="/tags/Travel/">Travel</a><small>5</small></li>
   
     <li><a href="/tags/jQuery/">jQuery</a><small>1</small></li>
-  
-    <li><a href="/tags/技術/">技術</a><small>1</small></li>
   
   </ul>
 </div>
