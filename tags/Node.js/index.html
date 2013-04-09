@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2013/3 | IF NOT</title>
+  <title>Node.js | IF NOT</title>
   <meta name="author" content="Casear Chu">
   
   
@@ -43,7 +43,7 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2013/3</h2>
+<h2 class="archive-title tag">Node.js</h2>
 
 
   
@@ -53,37 +53,75 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-03-28T08:01:16.000Z"><a href="/2013/03/28/sublime-indent-setting/">Mar 28 2013</a></time>
+        <time datetime="2012-11-22T12:43:42.000Z"><a href="/2012/11/22/shasum/">Nov 22 2012</a></time>
       
       
   
-    <h1 class="title"><a href="/2013/03/28/sublime-indent-setting/">Sublime indent setting</a></h1>
+    <h1 class="title"><a href="/2012/11/22/shasum/">shasum</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>每次用Sublime在編輯coffee script或Jade的時候，常常會因為space跟tab的混雜造成compile error，所以在這邊筆記一下設定</p>
-<p>先到 Sublime找設定</p>
-<img src="http://farm9.staticflickr.com/8517/8596462677_2040cc0cbf.jpg" class="">
-
-<p>下面為要增加的設定</p>
-<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+        <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
-</pre></td><td class="code"><pre>{
-  "<span class="attribute">tab_size</span>":<span class="value"><span class="number">2</span></span>,
-  "<span class="attribute">translate_tabs_to_spaces</span>":<span class="value"><span class="literal">true</span>
-}</span>
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span> <span class="number">100.0</span>%
+
+-bash: shasum：命令找不到
+Checksums <span class="keyword">do</span> <span class="keyword">not</span> match.
+Binary download failed, trying source.
+Additional options <span class="keyword">while</span> compiling: 
+
+<span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span> <span class="number">100.0</span>% 
 </pre></td></tr></table></figure>
+幾次在CentOS用nvm安裝node.js都出現這個問題，來記錄一下，問題出在預設沒有shasum這個指令
+
+所以可以先下
+
+尋找一下到底要裝什麼
+結果
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre>  yum whatprovides <span class="string">'*bin/shasum'</span>
+
+  <span class="constant">Loaded</span> <span class="symbol">plugins:</span> fastestmirror, security
+  <span class="constant">Loading</span> mirror speeds from cached hostfile
+  * <span class="symbol">base:</span> ftp.jaist.ac.jp
+  * <span class="symbol">epel:</span> ftp.tsukuba.wide.ad.jp
+  * <span class="symbol">extras:</span> ftp.jaist.ac.jp
+  * <span class="symbol">updates:</span> ftp.jaist.ac.jp
+  <span class="number">1</span><span class="symbol">:perl-Digest-SHA-</span><span class="number">5.47</span>-<span class="number">127</span>.el6.x86_64 <span class="symbol">:</span> <span class="constant">Perl</span> extension <span class="keyword">for</span> <span class="constant">SHA</span>-<span class="number">1</span>/<span class="number">224</span>/<span class="number">256</span>/<span class="number">384</span>/<span class="number">512</span>
+  <span class="constant">Repo</span>        <span class="symbol">:</span> base
+  <span class="constant">Matched</span> <span class="symbol">from:</span>
+  <span class="constant">Filename</span>    <span class="symbol">:</span> /usr/bin/shasum
+</pre></td></tr></table></figure>
+
+
+<p>安裝完即可結案</p>
+
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2013/03/28/sublime-indent-setting/#more" class="more-link">Read More</a>
+            <a href="/2012/11/22/shasum/#more" class="more-link">Read More</a>
           </div>
         
         
