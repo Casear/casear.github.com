@@ -3,13 +3,53 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Food | IF NOT</title>
+  <title>Javascript - Singleton Pattern, CoffeeScript version | IF NOT</title>
   <meta name="author" content="Casear Chu">
+  
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+singleton_function = do -&gt;
+  single = null
+  init = ()-&gt;
+    {
+      name:1
+      age:2
+    }
+  {
+    getInstance:-&gt;
+      if not single
+        single = init()
+      single
+  }
+
+obj= singleton_function.getInstance()
+obj.name =4
+console.log obj.name #4
+obj2= singleton_function.getInstance()
+console.log obj2.name #4">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="Javascript - Singleton Pattern, CoffeeScript version"/>
   <meta property="og:site_name" content="IF NOT"/>
 
   
@@ -42,83 +82,92 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">Food</h2>
-
-
-  
-    <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time datetime="2009-04-03T15:45:14.000Z"><a href="/2009/04/03/hutong/">Apr 3 2009</a></time>
+        <time datetime="2013-04-13T08:17:36.000Z"><a href="/2013/04/13/javascript-singleton-pattern/">Apr 13 2013</a></time>
       
       
   
-    <h1 class="title"><a href="/2009/04/03/hutong/">胡同燒肉</a></h1>
+    <h1 class="title">Javascript - Singleton Pattern, CoffeeScript version</h1>
   
 
     </header>
     <div class="entry">
       
-        <img src="http://farm4.static.flickr.com/3414/3440953098_1f506c09e4_b.jpg">
+        <figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre>singleton_function = do -&gt<span class="comment">;</span>
+  single = null
+  init = ()-&gt<span class="comment">;</span>
+    {
+      name:<span class="number">1</span>
+      age:<span class="number">2</span>
+    }
+  {
+    getInstance:-&gt<span class="comment">;</span>
+      if not single
+        single = init()
+      single
+  }
 
-<p>MS的<a href="http://casear.blogspot.com/2009/01/blog-post_7126.html">尾牙</a>已經過了快三個月了，得第三名的獎金終於到手，大家去胡同大吃大喝，當作慶功宴，以下是簡短介紹一下今晚的實況<br>今晚的菜單
-  1.烤牛舌
-  2.味噌雞
-  3.松阪豬
-  4.牛肋條
-  5.杏鮑菇
-  6.牛五花
-  7.和牛
-  8.鮭魚茶泡飯
-  9.鮭魚飯糰
-  10.起司地瓜
-  11.巧克力起司香蕉</p>
-<p>以上菜單，等一下會挑重點介紹
-首先要介紹今晚的烤手，說自己像媽媽的Riva姐，不要懷疑也就是尾牙喝到趴在地上的那個Riva姐</p>
-<img src="http://farm4.static.flickr.com/3545/3440953424_f38b37c3a1_b.jpg">
+obj= singleton_function<span class="preprocessor">.getInstance</span>()
+obj<span class="preprocessor">.name</span> =<span class="number">4</span>
+console<span class="preprocessor">.log</span> obj<span class="preprocessor">.name</span> <span class="preprocessor">#4</span>
+obj2= singleton_function<span class="preprocessor">.getInstance</span>()
+console<span class="preprocessor">.log</span> obj2<span class="preprocessor">.name</span> <span class="preprocessor">#4</span>
 
-<p>首先是烤牛舌，牛舌加上蔥花，烤單面的，不用太熟，就很好吃了，不過因為我在大和燒肉吃過了，所以沒有很驚艷的感覺
-味道評價三顆星</p>
-<img src="http://farm4.static.flickr.com/3319/3440140689_0f94ef780b_b.jpg">
-
-<p>介紹的是松阪豬，松阪豬油花很均勻，不過因為豬肉要烤全熟才能吃，所以肉質感覺比較沒那麼嫩
-味道平價三顆星  </p>
-<img src="http://farm4.static.flickr.com/3368/3440949432_dcdd8fa87e_b.jpg">
-
-<p>再來是牛五花，牛五花真的很好吃，醬油的醃製剛剛好，擺上火爐烤一下，加上蔥花跟洋蔥，超讚的啦!!
-味道評價四顆星</p>
-<img src="http://farm4.static.flickr.com/3306/3440954262_540b7e9cd0_b.jpg"> 
-
-<p>牛肋條，烤到微焦後，即可以食用了，肉汁很多，很有嚼勁，味道評價三顆星</p>
-<img src="http://farm4.static.flickr.com/3330/3440951086_b8d0ae69e2_b.jpg">
-
-<p>烤明蝦，大隻的明蝦，味道還蠻鮮甜，不過並不是非常特別，所以味道評價只有兩顆星</p>
-<img src="http://farm4.static.flickr.com/3345/3440954548_85c1d04007_b.jpg">
-
-<p>烤鮭魚，跟明蝦相同，味道不錯，但因為不夠特別，所以味道評價仍然只有兩顆星</p>
-<img src="http://farm4.static.flickr.com/3310/3440952218_7810e6c4db_b.jpg">
-
-<p>今晚因為Vincent要趕一份報告，所以不克前來，沒人性的我們為了報答他，點了一份價值1800的和牛來吃，以慰藉Vincent沒來的遺憾</p>
-<p>今晚的重頭戲就是和牛了，從照片可以看得出來，油花非常均勻，烤完之後，入口即化，味道評價五顆星阿!!!</p>
-<img src="http://farm4.staticflickr.com/3609/3440955628_4556ee05eb_b.jpg">
-
-<p>以上是菜色重點介紹，今晚六人聚餐，花費7XXX，還有一些錢可以買零食，這禮拜大家可以在來吃下午茶囉。</p>
-<h2>最後附上跳舞總召集人Betty吃蝦的模樣</h2>
-<img src="http://farm4.static.flickr.com/3402/3440141785_1834d317bc_b.jpg">
+</pre></td></tr></table></figure>
       
     </div>
     <footer>
       
         
-          <div class="alignleft">
-            <a href="/2009/04/03/hutong/#more" class="more-link">Read More</a>
-          </div>
         
+  
+  <div class="tags">
+    <a href="/tags/Javascript/">Javascript</a>, <a href="/tags/CoffeeScript/">CoffeeScript</a>, <a href="/tags/Design-Pattern/">Design Pattern</a>
+  </div>
+
         
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js"></script>
+
       
       <div class="clearfix"></div>
     </footer>
@@ -126,13 +175,12 @@
 </article>
 
 
-  
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
+<section id="comment">
+  <h1 class="title">Comments</h1>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
@@ -201,7 +249,7 @@ var disqus_shortname = 'casear';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>
