@@ -15,15 +15,19 @@
 7
 8
 9
+10
+11
 module_function = do -&gt;
-  hidden = 0 
+  hidden = 0  #hidden value, you can't access it directly
   {
     add:-&gt;
       hidden++
       console.log hidden
   }
 
-module_function.add()">
+module_function.add() # 1
+module_function.add() # 2
+module_function.add() # 3">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -86,15 +90,19 @@ module_function.add()">
 7
 8
 9
+10
+11
 </pre></td><td class="code"><pre>module_function = do -&gt<span class="comment">;</span>
-  hidden = <span class="number">0</span> 
+  hidden = <span class="number">0</span>  <span class="preprocessor">#hidden value, you can't access it directly</span>
   {
     <span class="keyword">add</span>:-&gt<span class="comment">;</span>
       hidden++
       console<span class="preprocessor">.log</span> hidden
   }
 
-module_function<span class="preprocessor">.add</span>()
+module_function<span class="preprocessor">.add</span>() <span class="preprocessor"># 1</span>
+module_function<span class="preprocessor">.add</span>() <span class="preprocessor"># 2</span>
+module_function<span class="preprocessor">.add</span>() <span class="preprocessor"># 3</span>
 </pre></td></tr></table></figure>
       
     </div>
