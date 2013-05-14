@@ -3,13 +3,67 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2013/4 | IF NOT</title>
+  <title>ØMQ | IF NOT</title>
   <meta name="author" content="Casear Chu">
+  
+  <meta name="description" content="embeddable networking library but acts like a concurrency framework
+transports 
+  in-process
+  inter-process
+  TCP
+  multicast
+N-to-N with patterns 
+  fanout
+  pub-sub
+  task distribution
+  request-reply.
+asynchronous I/O model
+LGPLv3
+The Ø in ØMQ is all about tradeoffs
+zero administration, zero cost, zero waste
+request and response 
+沒有response 就沒辦法在send
+The REQ-REP socket pair is in lockstep.
+  The Lazy Pirate pattern: reliable request-reply from the client side
+  The Simple Pirate pattern: reliable request-reply using load balancing
+  The Paranoid Pirate pattern: reliable request-reply with heartbeating
+  The Majordomo pattern: service-oriented reliable queuing
+  The Titanic pattern: disk-based/disconnected reliable queuing
+  The Binary Star pattern: primary-backup server failover
+  The Freelance pattern: brokerless reliable request-reply
+Pub-Sub
+  送回來的指令看開頭來決定是否接收
+  若subscribe &amp;#39;test&amp;#39; , send &amp;#39;test 1234&amp;#39;,&amp;#39;test1 1234&amp;#39;都會收到
+  A subscriber can connect to more than one publisher, using one connect call each time. Data will then arrive and be interleaved (&quot;fair-queued&quot;) so that no single publisher drowns out the others.
+  If a publisher has no connected subscribers, then it will simply drop all messages.
+  If you&amp;#39;re using TCP and a subscriber is slow, messages will queue up on the publisher. We&amp;#39;ll look at how to protect publishers against this using the &quot;high-water mark&quot; later.
+  From ØMQ v3.x, filtering happens at the publisher side when using a connected protocol (tcp: or ipc:). Using the epgm:// protocol, filtering happens at the subscriber side. In ØMQ v2.x, all filtering happened at the subscriber side.
+Push-Pull
+  1 worker: total elapsed time: 5034 msecs.
+  2 workers: total elapsed time: 2421 msecs.
+  4 workers: total elapsed time: 1018 msecs.
+  The ventilator&amp;#39;s PUSH socket distributes tasks to workers (assuming they are all connected before the batch starts going out) evenly. This is called load balancing and it&amp;#39;s something we&amp;#39;ll look at again in more detail.
+  The sink&amp;#39;s PULL socket collects results from workers evenly. This is called fair-queuing.
+Multithread
+   do not try to use the same socket from multiple threads
+   you need to shut down each socket that has ongoing requests. The proper way is to set a low LINGER value (1 second),
+Why We needed ZMQ
+  How do we handle I/O? Does our application block, or do we handle I/O in the background? This is a key design decision. Blocking I/O creates architectures that do not scale well. But background I/O can be very hard to do right.
+  How do we handle dynamic components, i.e., pieces that go away temporarily? Do we formally split components into &quot;clients&quot; and &quot;servers&quot; and mandate that servers cannot disappear? What then if we want to connect servers to servers? Do we try to reconnect every few seconds?
+  How do we represent a message on the wire? How do we frame data so it&amp;#39;s easy to write and read, safe from buffer overflows, efficient for small messages, yet adequate for the very largest videos of dancing cats wearing party hats?
+  How do we handle messages that we can&amp;#39;t deliver immediately? Particularly, if we&amp;#39;re waiting for a component to come back online? Do we discard messages, put them into a database, or into a memory queue?
+  Where do we store message queues? What happens if the component reading from a queue is very slow and causes our queues to build up? What&amp;#39;s our strategy then?
+  How do we handle lost messages? Do we wait for fresh data, request a resend, or do we build some kind of reliability layer that ensures messages cannot be lost? What if that layer itself crashes?
+  What if we need to use a different network transport. Say, multicast instead of TCP unicast? Or IPv6? Do we need to rewrite the applications, or is the transport abstracted in some layer?
+  How do we route messages? Can we send the same message to multiple peers? Can we send replies back to an original requester?
+  How do we write an API for another language? Do we re-implement a wire-level protocol or do we repackage a library? If the former, how can we guarantee efficient and stable stacks? If the latter, how can we guarantee interoperability?
+  How do we represent data so that it can be read between different architectures? Do we enforce a particular encoding for data types? How far is this the job of the messaging system rather than a higher layer?
+  How do we handle network errors? Do we wait and retry, ignore them silently, or abort?">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="ØMQ"/>
   <meta property="og:site_name" content="IF NOT"/>
 
   
@@ -42,84 +96,7 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2013/4</h2>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-04-30T07:33:49.000Z"><a href="/2013/04/30/ubuntu-route-setting/">Apr 30 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/04/30/ubuntu-route-setting/">ubuntu route setting</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>最近設定ubuntu的雙網卡的route有點問題</p>
-<p>在此記錄一下</p>
-<p>如果要重開之後route的設定還存在 </p>
-<p>請把要增加route的指令，寫入 /etc/rc.local</p>
-<p>route add -net x.x.x.x netmask 255.255.255.0 gw x.x.x.x dev eth1</p>
-<p>重開機即可</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/04/30/ubuntu-route-setting/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-04-24T02:55:33.000Z"><a href="/2013/04/24/wording-memo/">Apr 24 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/04/24/wording-memo/">wording memo</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
   <div class="post-content">
     <header>
@@ -129,7 +106,7 @@
       
       
   
-    <h1 class="title"><a href="/2013/04/24/ømq/">ØMQ</a></h1>
+    <h1 class="title">ØMQ</h1>
   
 
     </header>
@@ -194,11 +171,25 @@ The REQ-REP socket pair is in lockstep.
     <footer>
       
         
-          <div class="alignleft">
-            <a href="/2013/04/24/ømq/#more" class="more-link">Read More</a>
-          </div>
         
         
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js"></script>
+
       
       <div class="clearfix"></div>
     </footer>
@@ -206,240 +197,12 @@ The REQ-REP socket pair is in lockstep.
 </article>
 
 
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-04-17T08:04:22.000Z"><a href="/2013/04/17/ssh-default-port/">Apr 17 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/04/17/ssh-default-port/">ssh default port</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>最近擺到網路上的NAS一直被Try帳號密碼，所以索性把22 port用防火牆擋了，不過Linode租的Server沒辦法這樣擋，所以只好來換一個ssh port</p>
-<p>vim /etc/ssh/sshd_config</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="preprocessor">#port 22</span>
-</pre></td></tr></table></figure>
-
-<p>把上面的註解拿掉，改成你要的port</p>
-<p>service sshd restart</p>
-<p>在重新用你設定的port登入看看</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/04/17/ssh-default-port/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
+<section id="comment">
+  <h1 class="title">Comments</h1>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-</article>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-04-13T08:17:36.000Z"><a href="/2013/04/13/javascript-singleton-pattern/">Apr 13 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/04/13/javascript-singleton-pattern/">Javascript - Singleton Pattern, CoffeeScript version</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-</pre></td><td class="code"><pre>singleton_function = do -&gt<span class="comment">;</span>
-  single = null
-  init = ()-&gt<span class="comment">;</span>
-    {
-      name:<span class="number">1</span>
-      age:<span class="number">2</span>
-    }
-  {
-    getInstance:-&gt<span class="comment">;</span>
-      if not single
-        single = init()
-      single
-  }
-
-obj= singleton_function<span class="preprocessor">.getInstance</span>()
-obj<span class="preprocessor">.name</span> =<span class="number">4</span>
-console<span class="preprocessor">.log</span> obj<span class="preprocessor">.name</span> <span class="preprocessor">#4</span>
-obj2= singleton_function<span class="preprocessor">.getInstance</span>()
-console<span class="preprocessor">.log</span> obj2<span class="preprocessor">.name</span> <span class="preprocessor">#4</span>
-
-</pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/04/13/javascript-singleton-pattern/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-04-13T07:44:07.000Z"><a href="/2013/04/13/javascript-module-pattern/">Apr 13 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/04/13/javascript-module-pattern/">Javascript - Module Pattern , CoffeeScript version</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-</pre></td><td class="code"><pre>module_function = do -&gt<span class="comment">;</span>
-  hidden = <span class="number">0</span>  <span class="preprocessor">#hidden value, you can't access it directly</span>
-  {
-    <span class="keyword">add</span>:-&gt<span class="comment">;</span>
-      hidden++
-      console<span class="preprocessor">.log</span> hidden
-  }
-
-module_function<span class="preprocessor">.add</span>() <span class="preprocessor"># 1</span>
-module_function<span class="preprocessor">.add</span>() <span class="preprocessor"># 2</span>
-module_function<span class="preprocessor">.add</span>() <span class="preprocessor"># 3</span>
-</pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/04/13/javascript-module-pattern/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-04-03T05:46:31.000Z"><a href="/2013/04/03/jquery-datepicker/">Apr 3 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/04/03/jquery-datepicker/">jQuery DatePicker</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>最近在用jQuery UI 的Datepicker的幾個小問題</p>
-<h2>1.大小問題</h2>
-<p>預設從jQuery UI下載下來的css的DatePicker有點太大了，跟他網站上的範例不一下</p>
-<iframe style="width: 100%; height: 300px;" src="http://jsfiddle.net/we5SS/embedded/result,js,css,html/light"></iframe>
-
-<p>解法就是添加css設定</p>
-<iframe style="width: 100%; height: 300px;" src="http://jsfiddle.net/deJF9/embedded/css,result,js,html/light"></iframe>
-
-<h2>2.中文語系Layout</h2>
-<p>改成中文語系後，加入可以快速更改年月的設定後，Layout就跑掉了</p>
-<iframe style="width: 100%; height: 300px;" src="http://jsfiddle.net/5udCM/embedded/result,css,js,html/light"></iframe>
-
-<p>解法一樣是添加css設定</p>
-<iframe style="width: 100%; height: 300px;" src="http://jsfiddle.net/WZHYd/embedded/css,result,js,html/light"></iframe>
-
-<p>解完收工</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/04/03/jquery-datepicker/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
+</section>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
@@ -510,7 +273,7 @@ var disqus_shortname = 'casear';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>
