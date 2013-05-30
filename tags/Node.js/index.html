@@ -53,6 +53,53 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-05-30T10:12:33.000Z"><a href="/2013/05/30/node.js-on-ubuntu/">May 30 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/05/30/node.js-on-ubuntu/">node.js on ubuntu</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>在開發Node.js的時候，基本上我都是用nvm，但是到了Production，總不能還是用nvm吧
+所以對我的package的repository加了一個ppa的來源</p>
+<p>ppa:chris-lea/node.js</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> <span class="keyword">add</span>-apt-repository ppa:chris-lea/node.js
+sudo apt-<span class="keyword">get</span> <span class="keyword">update</span>
+sudo apt-<span class="keyword">get</span> install nodejs
+</pre></td></tr></table></figure>
+
+<p>裝完以後就可以用apt-get來更新版本了.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/05/30/node.js-on-ubuntu/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2012-11-22T12:43:42.000Z"><a href="/2012/11/22/shasum/">Nov 22 2012</a></time>
       
       
@@ -171,9 +218,9 @@ Additional options while compiling:
   
     <li><a href="/tags/Javascript/">Javascript</a><small>3</small></li>
   
-    <li><a href="/tags/Linux/">Linux</a><small>3</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>4</small></li>
   
-    <li><a href="/tags/Node.js/">Node.js</a><small>1</small></li>
+    <li><a href="/tags/Node.js/">Node.js</a><small>2</small></li>
   
     <li><a href="/tags/Technology/">Technology</a><small>1</small></li>
   
