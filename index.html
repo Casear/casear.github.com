@@ -49,6 +49,106 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-05-27T11:30:06.000Z"><a href="/2013/05/27/font/">May 27 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/05/27/font/">font</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-05-25T07:18:14.000Z"><a href="/2013/05/25/bootloader/">May 25 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/05/25/bootloader/">bootloader</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-05-07T12:44:48.000Z"><a href="/2013/05/07/meeting/">May 7 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/05/07/meeting/">meeting</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>testing </p>
+<p><em>testes</em></p>
+<p>test123</p>
+
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/05/07/meeting/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-04-30T07:33:49.000Z"><a href="/2013/04/30/ubuntu-route-setting/">Apr 30 2013</a></time>
       
       
@@ -73,94 +173,6 @@
         
           <div class="alignleft">
             <a href="/2013/04/30/ubuntu-route-setting/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-04-24T02:36:37.000Z"><a href="/2013/04/24/ømq/">Apr 24 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/04/24/ømq/">ØMQ</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>embeddable networking library but acts like a concurrency framework
-transports 
-  in-process
-  inter-process
-  TCP
-  multicast
-N-to-N with patterns 
-  fanout
-  pub-sub
-  task distribution
-  request-reply.
-asynchronous I/O model</p>
-<p>LGPLv3</p>
-<p>The Ø in ØMQ is all about tradeoffs
-zero administration, zero cost, zero waste</p>
-<p>request and response 
-沒有response 就沒辦法在send
-The REQ-REP socket pair is in lockstep.
-  The Lazy Pirate pattern: reliable request-reply from the client side
-  The Simple Pirate pattern: reliable request-reply using load balancing
-  The Paranoid Pirate pattern: reliable request-reply with heartbeating
-  The Majordomo pattern: service-oriented reliable queuing
-  The Titanic pattern: disk-based/disconnected reliable queuing
-  The Binary Star pattern: primary-backup server failover
-  The Freelance pattern: brokerless reliable request-reply</p>
-<p>Pub-Sub
-  送回來的指令看開頭來決定是否接收
-  若subscribe &#39;test&#39; , send &#39;test 1234&#39;,&#39;test1 1234&#39;都會收到</p>
-<p>  A subscriber can connect to more than one publisher, using one connect call each time. Data will then arrive and be interleaved (&quot;fair-queued&quot;) so that no single publisher drowns out the others.
-  If a publisher has no connected subscribers, then it will simply drop all messages.
-  If you&#39;re using TCP and a subscriber is slow, messages will queue up on the publisher. We&#39;ll look at how to protect publishers against this using the &quot;high-water mark&quot; later.
-  From ØMQ v3.x, filtering happens at the publisher side when using a connected protocol (tcp: or ipc:). Using the epgm:// protocol, filtering happens at the subscriber side. In ØMQ v2.x, all filtering happened at the subscriber side.</p>
-<p>Push-Pull
-  1 worker: total elapsed time: 5034 msecs.
-  2 workers: total elapsed time: 2421 msecs.
-  4 workers: total elapsed time: 1018 msecs.
-  The ventilator&#39;s PUSH socket distributes tasks to workers (assuming they are all connected before the batch starts going out) evenly. This is called load balancing and it&#39;s something we&#39;ll look at again in more detail.
-  The sink&#39;s PULL socket collects results from workers evenly. This is called fair-queuing.</p>
-<p>Multithread
-   do not try to use the same socket from multiple threads
-   you need to shut down each socket that has ongoing requests. The proper way is to set a low LINGER value (1 second),</p>
-<p>Why We needed ZMQ
-  How do we handle I/O? Does our application block, or do we handle I/O in the background? This is a key design decision. Blocking I/O creates architectures that do not scale well. But background I/O can be very hard to do right.
-  How do we handle dynamic components, i.e., pieces that go away temporarily? Do we formally split components into &quot;clients&quot; and &quot;servers&quot; and mandate that servers cannot disappear? What then if we want to connect servers to servers? Do we try to reconnect every few seconds?
-  How do we represent a message on the wire? How do we frame data so it&#39;s easy to write and read, safe from buffer overflows, efficient for small messages, yet adequate for the very largest videos of dancing cats wearing party hats?
-  How do we handle messages that we can&#39;t deliver immediately? Particularly, if we&#39;re waiting for a component to come back online? Do we discard messages, put them into a database, or into a memory queue?
-  Where do we store message queues? What happens if the component reading from a queue is very slow and causes our queues to build up? What&#39;s our strategy then?
-  How do we handle lost messages? Do we wait for fresh data, request a resend, or do we build some kind of reliability layer that ensures messages cannot be lost? What if that layer itself crashes?
-  What if we need to use a different network transport. Say, multicast instead of TCP unicast? Or IPv6? Do we need to rewrite the applications, or is the transport abstracted in some layer?
-  How do we route messages? Can we send the same message to multiple peers? Can we send replies back to an original requester?
-  How do we write an API for another language? Do we re-implement a wire-level protocol or do we repackage a library? If the former, how can we guarantee efficient and stable stacks? If the latter, how can we guarantee interoperability?
-  How do we represent data so that it can be read between different architectures? Do we enforce a particular encoding for data types? How far is this the job of the messaging system rather than a higher layer?
-  How do we handle network errors? Do we wait and retry, ignore them silently, or abort?</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/04/24/ømq/#more" class="more-link">Read More</a>
           </div>
         
         
@@ -533,161 +545,6 @@ Additional options while compiling:
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2011-06-20T14:00:17.000Z"><a href="/2011/06/20/interieurs-cour/">Jun 20 2011</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2011/06/20/interieurs-cour/">Interieurs Cour</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <img src="http://farm4.staticflickr.com/3200/5856156791_1d1cb80da4_b.jpg" class="">
-
-<p>Interieurs Cour是我在別人部落格裡面發現的短租公寓，最少需租三天，我租的是Siam房，應該可以住到三四個人，不過床只有一個，他們還特別把毛巾折成跟兩隻天鵝一樣的樣子（可能我跟他說我們是來蜜月的吧）。</p>
-<img src="http://farm3.staticflickr.com/2575/5856165907_ee4c28a887_b.jpg" class="">
-
-<p>房間內有有一巴厘島樣式的傘與桌子，佈置也是走東南亞風，有獨立的浴室廁所</p>
-<img src="http://farm4.staticflickr.com/3033/5856725630_383e89db61_b.jpg" class="">
-<img src="http://farm6.staticflickr.com/5150/5856176199_de27b6dbbc_b.jpg" class="">
-<img src="http://farm6.staticflickr.com/5033/5856195761_6280fcafa2_b.jpg" class="">
-<img src="http://farm4.staticflickr.com/3092/5856189927_b3f6fe905c_b.jpg" class="">
-
-<p>裡面也附了各式各樣的餐具，鹽，糖都有，鍋碗瓢盆都有，咖啡機，微波爐，烤麵包機，刀子，所以如果想要在這裡煮飯，只需要去買食材即可<br /></p>
-<img src="http://farm6.staticflickr.com/5101/5856767488_40b3eaa0e0_b.jpg" class="">
-
-<p>另外也附了洗衣機， 所以洗衣不是問題。
-樓下就是Nice出名的Messna廣場，離海邊走路約五分鐘，附近也馬上就搭的到Nice的捷運，是一個交通非常便利的地方</p>
-<img src="http://farm3.staticflickr.com/2486/5857059426_02f8cd2d8f_b.jpg" class="">
-<img src="http://farm4.staticflickr.com/3287/5856715793_8ddf83511a_b.jpg" class="">
-
-<p>不過Nice的路有點錯綜複雜，不建議在此處開車，常常不小心就彎進去單行道，Messna的停車場停一天要20歐元左右，有點貴，所以我到了這裡就把車還了。</p>
-<p><img src="http://farm3.staticflickr.com/2500/5856456281_b41d9817c3_b.jpg" class="">
-（掰掰車子…）</p>
-<p>Nice的TGV車站到Monaco或Cannes都很近，我們選擇做火車的方式前往。
-該地點是個不錯玩蔚藍的中心，不過特別要提到的是</p>
-<h3>房東不會來房東不會來房東不會來房東不會來</h3>
-<p>因為他家住很遠，所以你到了，就直接上三樓，有個房間是房東的管理室，門上面會黏你的名字的信封，打開信封後，會告訴你你房間鑰匙在對面的小盒子，密碼是多少，還有二樓的門密碼是多少，你在拿這些去找你的房間，有一天他會找人去敲你房門，跟你說可以附房錢了，就在上到房東的管理室上面付錢，Check out只要把鑰匙丟進去信箱就好了，這點倒是要特別注意的。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2011/06/20/interieurs-cour/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2011-06-18T00:43:28.000Z"><a href="/2011/06/18/la-petite-provence/">Jun 18 2011</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2011/06/18/la-petite-provence/">La Petite Provence</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <img src="http://farm6.staticflickr.com/5061/5820260015_86eca6d1a1_b.jpg" class="">
-
-<p>La Petite Provence 是我在背包客棧上看到很多人推薦的民宿，最被推崇的就是該民宿的法式晚餐，還有環境，因為我是在八個月前計畫這次旅行，所以很快的寫信過去詢問Guillaume，很幸運的6/4有空房，但是Guillaume回信來詢問我，確定只住一天，那附近有很多好玩的景點，於是我便在加訂了一天的住宿，事後我後悔了，我應該在多訂一天的。</p>
-<p>人員介紹</p>
-<ul>
-<li>Guillaume</li>
-</ul>
-<img src="http://farm4.staticflickr.com/3468/5821991184_f53b3b7f2b_b.jpg" class="">
-
-
-<p>該民宿主人，老婆為DiDi，不過DiDi聽說是位空姐，我們入住期間，出去工作了；Guillaume個性蠻熱情的，聽到我的破英文，也還是熱情的回應，而且會跟你開玩笑，不像某知名包包品牌店員對我們使白眼，另外也是該民宿的大廚，早晚餐都是他準備的。</p>
-<ul>
-<li>Zoe</li>
-</ul>
-<img src="http://farm4.staticflickr.com/3638/5820215275_b92db4beb7_b.jpg" class="">
-
-<p>上圖右邊那個（講左邊的想死），店狗，個性溫和，喜歡被摸，每天都趴在門口招待客人，最討厭下雨天，因為下雨天，Guillaume每天帶她出去閒晃兩次的行程就會取消。</p>
-<ul>
-<li>Jack</li>
-</ul>
-<img src="http://farm4.staticflickr.com/3504/5821360045_0e8cab1cb0_b.jpg" class="">
-
-<p>店貓，每天早上會偷跑進去廚房找Guillaume討吃的，喜歡吃奶油，不喜歡吃Chesse，所以請不要偷餵牠晚餐的Chesse，個性孤僻，不喜歡被抓到，不過也不會咬人或抓人，根據Guillaume說明，有時候他會來討摸摸。</p>
-<p>房間介紹
-房間的話就中規中矩，非常的乾淨整潔，我們的房間裡面是有衛浴的，不過沒有門，有個簾子，窗戶打開很明亮，隔音感覺也還不錯，不會聽到別人的聲音。</p>
-<img src="http://farm3.staticflickr.com/2631/5820175275_0466a19d72_b.jpg">
-<img src="http://farm3.staticflickr.com/2424/5820768338_d940131613_b.jpg">
-
-
-
-<p>餐點的部份
-晚餐
-特別說明Guillaume星期天不煮飯，所以要訂餐，請訂一到六</p>
-<p>前菜 - 培根沙拉</p>
-<img src="http://farm3.staticflickr.com/2622/5820376447_a2d59806ee_b.jpg"" class="">
-
-<p>裡面加了煙燻培根，生菜，還有一些 Chesse，味道還不錯，不會感覺自己像隻牛在吃草。</p>
-<p>主菜</p>
-<img src="http://farm4.staticflickr.com/3541/5820939776_5a759376c4_b.jpg" class="">
-
-<p>今日的主菜不是我想吃的鴨胸，是旗魚排，肉質不錯，不過還是想吃鴨胸</p>
-<p>餐後的Chesse</p>
-<img src="http://farm3.staticflickr.com/2423/5820389895_c977cb0a9f_b.jpg">
-
-<p>Chesse種類太多了，左下那個是山羊的Chesse，要吃下去需要一點勇氣，不過Guillaume說要吃Chesse才有甜點，所以我們還是忍痛吃了一些.</p>
-<p>甜點
-香草冰淇淋＋布朗尼+奶油草莓，甜點好吃</p>
-<img src="http://farm3.staticflickr.com/2290/5820394657_f47b301979_b.jpg" class="">
-
-<p>早餐</p>
-<p>巧克力可頌＋可頌＋棍子麵包，棍子麵包有點硬，不過很有嚼勁</p>
-<img src="http://farm4.staticflickr.com/3443/5820984512_7616ba8bb8_b.jpg">
-
-<p>手工果醬，果醬最特別的是左下的無花果果醬，台灣不產無花果，所以來這可以嚐嚐</p>
-<img src="http://farm3.staticflickr.com/2031/5820425471_0e78035a77_b.jpg" class="">
-
-<p>交通的部份
-民宿位於Lirac小鎮，只要30分鐘就可以把該小鎮逛完，離Avignon大約20到30分鐘車程，到Arles約一個小時，要去Avignon東方的Gordes 的山城都還不算太遠，算是可以當做中心的民宿。</p>
-<p>總而言之，該民宿非常值得來住個2、3個晚上，不過記得要提早預約喔。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2011/06/18/la-petite-provence/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -729,7 +586,7 @@ Additional options while compiling:
   
     <li><a href="/tags/Linux/">Linux</a><small>3</small></li>
   
-    <li><a href="/tags/Node.js/">Node.js</a><small>1</small></li>
+    <li><a href="/tags/Node.js/">Node.js</a><small>2</small></li>
   
     <li><a href="/tags/Technology/">Technology</a><small>1</small></li>
   
