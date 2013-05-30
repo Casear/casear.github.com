@@ -6,7 +6,7 @@
   <title>Javascript - Singleton Pattern, CoffeeScript version | IF NOT</title>
   <meta name="author" content="Casear Chu">
   
-  <meta name="description" content="1
+  <meta name="description" content="setting 1
 2
 3
 4
@@ -98,7 +98,7 @@ console.log obj2.name #4">
     </header>
     <div class="entry">
       
-        <figure class="highlight"><table><tr><td class="gutter"><pre>1
+        <figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -118,25 +118,25 @@ console.log obj2.name #4">
 18
 19
 20
-</pre></td><td class="code"><pre>singleton_function = do -&gt<span class="comment">;</span>
+</pre></td><td class="code"><pre>singleton_function = do -&gt;
   single = null
-  init = ()-&gt<span class="comment">;</span>
+  init = ()-&gt;
     {
-      name:<span class="number">1</span>
-      age:<span class="number">2</span>
+      name:1
+      age:2
     }
   {
-    getInstance:-&gt<span class="comment">;</span>
+    getInstance:-&gt;
       if not single
         single = init()
       single
   }
 
-obj= singleton_function<span class="preprocessor">.getInstance</span>()
-obj<span class="preprocessor">.name</span> =<span class="number">4</span>
-console<span class="preprocessor">.log</span> obj<span class="preprocessor">.name</span> <span class="preprocessor">#4</span>
-obj2= singleton_function<span class="preprocessor">.getInstance</span>()
-console<span class="preprocessor">.log</span> obj2<span class="preprocessor">.name</span> <span class="preprocessor">#4</span>
+obj= singleton_function.getInstance()
+obj.name =4
+console.log obj.name #4
+obj2= singleton_function.getInstance()
+console.log obj2.name #4
 
 </pre></td></tr></table></figure>
       

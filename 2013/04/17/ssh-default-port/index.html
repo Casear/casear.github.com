@@ -8,7 +8,7 @@
   
   <meta name="description" content="最近擺到網路上的NAS一直被Try帳號密碼，所以索性把22 port用防火牆擋了，不過Linode租的Server沒辦法這樣擋，所以只好來換一個ssh port
 vim /etc/ssh/sshd_config
-1
+setting 1
 #port 22
 
 
@@ -70,8 +70,8 @@ service sshd restart
       
         <p>最近擺到網路上的NAS一直被Try帳號密碼，所以索性把22 port用防火牆擋了，不過Linode租的Server沒辦法這樣擋，所以只好來換一個ssh port</p>
 <p>vim /etc/ssh/sshd_config</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="preprocessor">#port 22</span>
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>#port 22
 </pre></td></tr></table></figure>
 
 <p>把上面的註解拿掉，改成你要的port</p>
