@@ -6,7 +6,7 @@
   <title>Javascript - Module Pattern , CoffeeScript version | IF NOT</title>
   <meta name="author" content="Casear Chu">
   
-  <meta name="description" content="1
+  <meta name="description" content="setting 1
 2
 3
 4
@@ -81,7 +81,7 @@ module_function.add() # 3">
     </header>
     <div class="entry">
       
-        <figure class="highlight"><table><tr><td class="gutter"><pre>1
+        <figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -92,17 +92,17 @@ module_function.add() # 3">
 9
 10
 11
-</pre></td><td class="code"><pre>module_function = do -&gt<span class="comment">;</span>
-  hidden = <span class="number">0</span>  <span class="preprocessor">#hidden value, you can't access it directly</span>
+</pre></td><td class="code"><pre>module_function = do -&gt;
+  hidden = 0  #hidden value, you can't access it directly
   {
-    <span class="keyword">add</span>:-&gt<span class="comment">;</span>
+    add:-&gt;
       hidden++
-      console<span class="preprocessor">.log</span> hidden
+      console.log hidden
   }
 
-module_function<span class="preprocessor">.add</span>() <span class="preprocessor"># 1</span>
-module_function<span class="preprocessor">.add</span>() <span class="preprocessor"># 2</span>
-module_function<span class="preprocessor">.add</span>() <span class="preprocessor"># 3</span>
+module_function.add() # 1
+module_function.add() # 2
+module_function.add() # 3
 </pre></td></tr></table></figure>
       
     </div>
