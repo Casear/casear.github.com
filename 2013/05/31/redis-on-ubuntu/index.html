@@ -3,13 +3,60 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Node.js | IF NOT</title>
+  <title>redis on ubuntu | IF NOT</title>
   <meta name="author" content="Casear Chu">
+  
+  <meta name="description" content="這邊記錄安裝Redis的過程
+再ubuntu安裝Reids蠻簡單的
+1
+sudo apt-get install redis-server
+
+
+但裝完後，我還想把它改成用upstart的方式啓動
+先把原來的啓動模式取消，停掉預設的init.d script 
+1
+sudo update-rc.d redis-server disable
+
+
+
+
+/etc/redis/redis.conf
+1
+daemonize no
+
+
+建立upstart的啓動script
+/etc/init/redis-server.conf
+1
+2
+3
+4
+5
+6
+7
+8
+description &quot;redis server&quot;
+
+start on runlevel [23]
+stop on shutdown
+
+exec sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf
+
+respawn
+
+
+再來就可以用upstart啟動了
+1
+2
+3
+sudo start redis-server
+sudo restart redis-server
+sudo stop redis-server">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="redis on ubuntu"/>
   <meta property="og:site_name" content="IF NOT"/>
 
   
@@ -42,50 +89,98 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">Node.js</h2>
-
-
-  
-    <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-05-30T10:12:33.000Z"><a href="/2013/05/30/node.js-on-ubuntu/">May 30 2013</a></time>
+        <time datetime="2013-05-31T03:34:07.000Z"><a href="/2013/05/31/redis-on-ubuntu/">May 31 2013</a></time>
       
       
   
-    <h1 class="title"><a href="/2013/05/30/node.js-on-ubuntu/">node.js on ubuntu</a></h1>
+    <h1 class="title">redis on ubuntu</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>在開發Node.js的時候，基本上我都是用nvm，但是到了Production，總不能還是用nvm吧
-所以對我的package的repository加了一個ppa的來源</p>
-<p>ppa:chris-lea/node.js</p>
+        <p>這邊記錄安裝Redis的過程</p>
+<p>再ubuntu安裝Reids蠻簡單的</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install redis-server
+</pre></td></tr></table></figure>
+
+<p>但裝完後，我還想把它改成用upstart的方式啓動</p>
+<p>先把原來的啓動模式取消，停掉預設的init.d script </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> <span class="keyword">update</span>-rc.d redis-server disable
+</pre></td></tr></table></figure>
+
+
+
+<p>/etc/redis/redis.conf</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">daemonize</span> <span class="built_in">no</span>
+</pre></td></tr></table></figure>
+
+<p>建立upstart的啓動script
+/etc/init/redis-server.conf</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> <span class="keyword">add</span>-apt-repository ppa:chris-lea/node.js
-sudo apt-<span class="keyword">get</span> <span class="keyword">update</span>
-sudo apt-<span class="keyword">get</span> install nodejs
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>description <span class="string">"redis server"</span>
+
+start <span class="function_start"><span class="keyword">on</span> <span class="title">runlevel</span></span> [<span class="number">23</span>]
+stop <span class="function_start"><span class="keyword">on</span> <span class="title">shutdown</span></span>
+
+exec sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf
+
+respawn
 </pre></td></tr></table></figure>
 
-<p>裝完以後就可以用apt-get來更新版本了.</p>
-
+<p>再來就可以用upstart啟動了</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>sudo start redis-<span class="built_in">server</span>
+sudo restart redis-<span class="built_in">server</span>
+sudo <span class="keyword">stop</span> redis-<span class="built_in">server</span>
+</pre></td></tr></table></figure>
       
     </div>
     <footer>
       
         
-          <div class="alignleft">
-            <a href="/2013/05/30/node.js-on-ubuntu/#more" class="more-link">Read More</a>
-          </div>
         
+  
+  <div class="tags">
+    <a href="/tags/NoSQL/">NoSQL</a>, <a href="/tags/Linux/">Linux</a>
+  </div>
+
         
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js"></script>
+
       
       <div class="clearfix"></div>
     </footer>
@@ -93,99 +188,12 @@ sudo apt-<span class="keyword">get</span> install nodejs
 </article>
 
 
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2012-11-22T12:43:42.000Z"><a href="/2012/11/22/shasum/">Nov 22 2012</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2012/11/22/shasum/">shasum</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-</pre></td><td class="code"><pre>######################################################################## 100.0%
-
--bash: shasum：命令找不到
-Checksums do not match.
-Binary download failed, trying source.
-Additional options while compiling: 
-
-######################################################################## 100.0% 
-</pre></td></tr></table></figure>
-幾次在CentOS用nvm安裝node.js都出現這個問題，來記錄一下，問題出在預設沒有shasum這個指令
-
-所以可以先下
-
-尋找一下到底要裝什麼
-結果
-<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-</pre></td><td class="code"><pre>  yum whatprovides '*bin/shasum'
-
-  Loaded plugins: fastestmirror, security
-  Loading mirror speeds from cached hostfile
-  * base: ftp.jaist.ac.jp
-  * epel: ftp.tsukuba.wide.ad.jp
-  * extras: ftp.jaist.ac.jp
-  * updates: ftp.jaist.ac.jp
-  1:perl-Digest-SHA-5.47-127.el6.x86_64 : Perl extension for SHA-1/224/256/384/512
-  Repo        : base
-  Matched from:
-  Filename    : /usr/bin/shasum
-</pre></td></tr></table></figure>
-
-
-<p>安裝完即可結案</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2012/11/22/shasum/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
+<section id="comment">
+  <h1 class="title">Comments</h1>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-</article>
-
-
-  
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
+</section>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
@@ -258,7 +266,7 @@ var disqus_shortname = 'casear';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>

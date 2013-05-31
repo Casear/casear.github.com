@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2009/5 | IF NOT</title>
+  <title>NoSQL | IF NOT</title>
   <meta name="author" content="Casear Chu">
   
   
@@ -43,7 +43,7 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2009/5</h2>
+<h2 class="archive-title tag">NoSQL</h2>
 
 
   
@@ -53,28 +53,70 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2009-05-31T14:55:21.000Z"><a href="/2009/05/31/fly/">May 31 2009</a></time>
+        <time datetime="2013-05-31T03:34:07.000Z"><a href="/2013/05/31/redis-on-ubuntu/">May 31 2013</a></time>
       
       
   
-    <h1 class="title"><a href="/2009/05/31/fly/">fly</a></h1>
+    <h1 class="title"><a href="/2013/05/31/redis-on-ubuntu/">redis on ubuntu</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>沒什麼好說的，飛吧<br /></p>
-<img src="http://farm3.static.flickr.com/2429/3580386424_704ef26ab2_b.jpg" class="">
-<img src="http://farm4.static.flickr.com/3405/3580408060_c2bd74aabc_b.jpg" class="">
-<img src="http://farm4.static.flickr.com/3599/3578381267_75755ec811_b.jpg" class=""> 
-<img src="http://farm4.static.flickr.com/3392/3580421786_a7d15319ac_b.jpg">
+        <p>這邊記錄安裝Redis的過程</p>
+<p>再ubuntu安裝Reids蠻簡單的</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install redis-server
+</pre></td></tr></table></figure>
+
+<p>但裝完後，我還想把它改成用upstart的方式啓動</p>
+<p>先把原來的啓動模式取消，停掉預設的init.d script </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> <span class="keyword">update</span>-rc.d redis-server disable
+</pre></td></tr></table></figure>
+
+
+
+<p>/etc/redis/redis.conf</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">daemonize</span> <span class="built_in">no</span>
+</pre></td></tr></table></figure>
+
+<p>建立upstart的啓動script
+/etc/init/redis-server.conf</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>description <span class="string">"redis server"</span>
+
+start <span class="function_start"><span class="keyword">on</span> <span class="title">runlevel</span></span> [<span class="number">23</span>]
+stop <span class="function_start"><span class="keyword">on</span> <span class="title">shutdown</span></span>
+
+exec sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf
+
+respawn
+</pre></td></tr></table></figure>
+
+<p>再來就可以用upstart啟動了</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>sudo start redis-<span class="built_in">server</span>
+sudo restart redis-<span class="built_in">server</span>
+sudo <span class="keyword">stop</span> redis-<span class="built_in">server</span>
+</pre></td></tr></table></figure>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2009/05/31/fly/#more" class="more-link">Read More</a>
+            <a href="/2013/05/31/redis-on-ubuntu/#more" class="more-link">Read More</a>
           </div>
         
         

@@ -53,6 +53,87 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-05-31T03:34:07.000Z"><a href="/2013/05/31/redis-on-ubuntu/">May 31 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/05/31/redis-on-ubuntu/">redis on ubuntu</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>這邊記錄安裝Redis的過程</p>
+<p>再ubuntu安裝Reids蠻簡單的</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install redis-server
+</pre></td></tr></table></figure>
+
+<p>但裝完後，我還想把它改成用upstart的方式啓動</p>
+<p>先把原來的啓動模式取消，停掉預設的init.d script </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> <span class="keyword">update</span>-rc.d redis-server disable
+</pre></td></tr></table></figure>
+
+
+
+<p>/etc/redis/redis.conf</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">daemonize</span> <span class="built_in">no</span>
+</pre></td></tr></table></figure>
+
+<p>建立upstart的啓動script
+/etc/init/redis-server.conf</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>description <span class="string">"redis server"</span>
+
+start <span class="function_start"><span class="keyword">on</span> <span class="title">runlevel</span></span> [<span class="number">23</span>]
+stop <span class="function_start"><span class="keyword">on</span> <span class="title">shutdown</span></span>
+
+exec sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf
+
+respawn
+</pre></td></tr></table></figure>
+
+<p>再來就可以用upstart啟動了</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>sudo start redis-<span class="built_in">server</span>
+sudo restart redis-<span class="built_in">server</span>
+sudo <span class="keyword">stop</span> redis-<span class="built_in">server</span>
+</pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/05/31/redis-on-ubuntu/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-05-30T10:12:33.000Z"><a href="/2013/05/30/node.js-on-ubuntu/">May 30 2013</a></time>
       
       
@@ -448,7 +529,9 @@ module_function.add() # 3
   
     <li><a href="/tags/Javascript/">Javascript</a><small>3</small></li>
   
-    <li><a href="/tags/Linux/">Linux</a><small>4</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>5</small></li>
+  
+    <li><a href="/tags/NoSQL/">NoSQL</a><small>1</small></li>
   
     <li><a href="/tags/Node.js/">Node.js</a><small>2</small></li>
   
