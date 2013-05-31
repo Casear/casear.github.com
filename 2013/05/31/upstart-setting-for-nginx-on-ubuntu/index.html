@@ -7,13 +7,13 @@
   <meta name="author" content="Casear Chu">
   
   <meta name="description" content="安裝nginx
-1
+setting 1
 sudo apt-get install nginx
 
 
 增加upstart的script
 /etc/init/nginx.conf
-1
+setting 1
 2
 3
 4
@@ -60,7 +60,7 @@ exec $DAEMON
 
 
 可以用upstart啟動了
-1
+setting 1
 2
 3
 sudo start nginx
@@ -120,13 +120,13 @@ sudo stop nginx">
     <div class="entry">
       
         <p>安裝nginx</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install nginx
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>sudo apt-get install nginx
 </pre></td></tr></table></figure>
 
 <p>增加upstart的script</p>
 <p>/etc/init/nginx.conf</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -148,37 +148,37 @@ sudo stop nginx">
 20
 21
 22
-</pre></td><td class="code"><pre><span class="title">description</span> <span class="string">"nginx http daemon"</span>
-<span class="title">author</span> <span class="string">"George Shammas &lt;georgyo@gmail.com&gt;"</span>
+</pre></td><td class="code"><pre>description "nginx http daemon"
+author "George Shammas &lt;georgyo@gmail.com&gt;"
  
-<span class="title">start</span> on (filesystem and net-device-up <span class="type">IFACE</span>=lo)
-<span class="title">stop</span> on runlevel [!<span class="number">2345</span>]
+start on (filesystem and net-device-up IFACE=lo)
+stop on runlevel [!2345]
  
-<span class="title">env</span> <span class="type">DAEMON</span>=/usr/sbin/nginx
-<span class="title">env</span> <span class="type">PID</span>=/var/run/nginx.pid
+env DAEMON=/usr/sbin/nginx
+env PID=/var/run/nginx.pid
  
-<span class="title">expect</span> fork
-<span class="title">respawn</span>
-<span class="title">respawn</span> limit <span class="number">10</span> <span class="number">5</span>
+expect fork
+respawn
+respawn limit 10 5
 #oom never
  
-<span class="title">pre</span>-start script
-        $<span class="type">DAEMON</span> -t
-        <span class="keyword">if</span> [ $? -ne <span class="number">0</span> ]
-                <span class="keyword">then</span> exit $?
+pre-start script
+        $DAEMON -t
+        if [ $? -ne 0 ]
+                then exit $?
         fi
-<span class="title">end</span> script
+end script
  
-<span class="title">exec</span> $<span class="type">DAEMON</span>
+exec $DAEMON
 </pre></td></tr></table></figure>
 
 <p>可以用upstart啟動了</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre><span class="title">sudo</span> start nginx
-<span class="title">sudo</span> restart nginx
-<span class="title">sudo</span> stop nginx
+</pre></td><td class="code"><pre>sudo start nginx
+sudo restart nginx
+sudo stop nginx
 </pre></td></tr></table></figure>
       
     </div>

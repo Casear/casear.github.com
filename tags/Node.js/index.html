@@ -66,12 +66,12 @@
         <p>在開發Node.js的時候，基本上我都是用nvm，但是到了Production，總不能還是用nvm吧
 所以對我的package的repository加了一個ppa的來源</p>
 <p>ppa:chris-lea/node.js</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> <span class="keyword">add</span>-apt-repository ppa:chris-lea/node.js
-sudo apt-<span class="keyword">get</span> <span class="keyword">update</span>
-sudo apt-<span class="keyword">get</span> install nodejs
+</pre></td><td class="code"><pre>sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get install nodejs
 </pre></td></tr></table></figure>
 
 <p>裝完以後就可以用apt-get來更新版本了.</p>

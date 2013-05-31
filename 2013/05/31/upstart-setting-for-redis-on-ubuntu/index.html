@@ -8,26 +8,26 @@
   
   <meta name="description" content="這邊記錄安裝Redis的過程
 在ubuntu安裝Reids蠻簡單的
-1
+setting 1
 sudo apt-get install redis-server
 
 
 但裝完後，我還想把它改成用upstart的方式啓動
 先把原來的啓動模式取消，停掉預設的init.d script 
-1
+setting 1
 sudo update-rc.d redis-server disable
 
 
 
 
 /etc/redis/redis.conf
-1
+setting 1
 daemonize no
 
 
 建立upstart的啓動script
 /etc/init/redis-server.conf
-1
+setting 1
 2
 3
 4
@@ -46,7 +46,7 @@ respawn
 
 
 再來就可以用upstart啟動了
-1
+setting 1
 2
 3
 sudo start redis-server
@@ -107,26 +107,26 @@ sudo stop redis-server">
       
         <p>這邊記錄安裝Redis的過程</p>
 <p>在ubuntu安裝Reids蠻簡單的</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install redis-server
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>sudo apt-get install redis-server
 </pre></td></tr></table></figure>
 
 <p>但裝完後，我還想把它改成用upstart的方式啓動</p>
 <p>先把原來的啓動模式取消，停掉預設的init.d script </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> <span class="keyword">update</span>-rc.d redis-server disable
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>sudo update-rc.d redis-server disable
 </pre></td></tr></table></figure>
 
 
 
 <p>/etc/redis/redis.conf</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">daemonize</span> <span class="built_in">no</span>
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>daemonize no
 </pre></td></tr></table></figure>
 
 <p>建立upstart的啓動script
 /etc/init/redis-server.conf</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -134,10 +134,10 @@ sudo stop redis-server">
 6
 7
 8
-</pre></td><td class="code"><pre>description <span class="string">"redis server"</span>
+</pre></td><td class="code"><pre>description "redis server"
 
-start <span class="function_start"><span class="keyword">on</span> <span class="title">runlevel</span></span> [<span class="number">23</span>]
-stop <span class="function_start"><span class="keyword">on</span> <span class="title">shutdown</span></span>
+start on runlevel [23]
+stop on shutdown
 
 exec sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf
 
@@ -145,12 +145,12 @@ respawn
 </pre></td></tr></table></figure>
 
 <p>再來就可以用upstart啟動了</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre>sudo start redis-<span class="built_in">server</span>
-sudo restart redis-<span class="built_in">server</span>
-sudo <span class="keyword">stop</span> redis-<span class="built_in">server</span>
+</pre></td><td class="code"><pre>sudo start redis-server
+sudo restart redis-server
+sudo stop redis-server
 </pre></td></tr></table></figure>
       
     </div>
