@@ -53,6 +53,101 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-05-31T06:41:06.000Z"><a href="/2013/05/31/nginx-on-ubuntu/">May 31 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/05/31/nginx-on-ubuntu/">nginx on ubuntu</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>安裝nginx</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install nginx
+</pre></td></tr></table></figure>
+
+<p>增加upstart的script</p>
+<p>/etc/init/nginx.conf</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="code"><pre><span class="title">description</span> <span class="string">"nginx http daemon"</span>
+<span class="title">author</span> <span class="string">"George Shammas &lt;georgyo@gmail.com&gt;"</span>
+ 
+<span class="title">start</span> on (filesystem and net-device-up <span class="type">IFACE</span>=lo)
+<span class="title">stop</span> on runlevel [!<span class="number">2345</span>]
+ 
+<span class="title">env</span> <span class="type">DAEMON</span>=/usr/sbin/nginx
+<span class="title">env</span> <span class="type">PID</span>=/var/run/nginx.pid
+ 
+<span class="title">expect</span> fork
+<span class="title">respawn</span>
+<span class="title">respawn</span> limit <span class="number">10</span> <span class="number">5</span>
+#oom never
+ 
+<span class="title">pre</span>-start script
+        $<span class="type">DAEMON</span> -t
+        <span class="keyword">if</span> [ $? -ne <span class="number">0</span> ]
+                <span class="keyword">then</span> exit $?
+        fi
+<span class="title">end</span> script
+ 
+<span class="title">exec</span> $<span class="type">DAEMON</span>
+</pre></td></tr></table></figure>
+
+<p>可以用upstart啟動了</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="title">sudo</span> start nginx
+<span class="title">sudo</span> restart nginx
+<span class="title">sudo</span> stop nginx
+</pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/05/31/nginx-on-ubuntu/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-05-31T03:34:07.000Z"><a href="/2013/05/31/redis-on-ubuntu/">May 31 2013</a></time>
       
       
@@ -384,7 +479,7 @@ Additional options while compiling:
   
     <li><a href="/tags/Javascript/">Javascript</a><small>3</small></li>
   
-    <li><a href="/tags/Linux/">Linux</a><small>5</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>6</small></li>
   
     <li><a href="/tags/NoSQL/">NoSQL</a><small>1</small></li>
   
