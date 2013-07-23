@@ -49,6 +49,323 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-04-13T08:17:36.000Z"><a href="/2013/04/13/javascript-singleton-pattern/">Apr 13 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/04/13/javascript-singleton-pattern/">Javascript - Singleton Pattern, CoffeeScript version</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre>singleton_function = do -&gt;
+  single = null
+  init = ()-&gt;
+    {
+      name:1
+      age:2
+    }
+  {
+    getInstance:-&gt;
+      if not single
+        single = init()
+      single
+  }
+
+obj= singleton_function.getInstance()
+obj.name =4
+console.log obj.name #4
+obj2= singleton_function.getInstance()
+console.log obj2.name #4
+
+</pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/04/13/javascript-singleton-pattern/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-04-13T07:44:07.000Z"><a href="/2013/04/13/javascript-module-pattern/">Apr 13 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/04/13/javascript-module-pattern/">Javascript - Module Pattern , CoffeeScript version</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre>module_function = do -&gt;
+  hidden = 0  #hidden value, you can't access it directly
+  {
+    add:-&gt;
+      hidden++
+      console.log hidden
+  }
+
+module_function.add() # 1
+module_function.add() # 2
+module_function.add() # 3
+</pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/04/13/javascript-module-pattern/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-04-03T05:46:31.000Z"><a href="/2013/04/03/jquery-datepicker/">Apr 3 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/04/03/jquery-datepicker/">jQuery DatePicker</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>最近在用jQuery UI 的Datepicker的幾個小問題</p>
+<h2>1.大小問題</h2>
+<p>預設從jQuery UI下載下來的css的DatePicker有點太大了，跟他網站上的範例不一下</p>
+<iframe style="width: 100%; height: 300px;" src="http://jsfiddle.net/we5SS/embedded/result,js,css,html/light"></iframe>
+
+<p>解法就是添加css設定</p>
+<iframe style="width: 100%; height: 300px;" src="http://jsfiddle.net/deJF9/embedded/css,result,js,html/light"></iframe>
+
+<h2>2.中文語系Layout</h2>
+<p>改成中文語系後，加入可以快速更改年月的設定後，Layout就跑掉了</p>
+<iframe style="width: 100%; height: 300px;" src="http://jsfiddle.net/5udCM/embedded/result,css,js,html/light"></iframe>
+
+<p>解法一樣是添加css設定</p>
+<iframe style="width: 100%; height: 300px;" src="http://jsfiddle.net/WZHYd/embedded/css,result,js,html/light"></iframe>
+
+<p>解完收工</p>
+
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/04/03/jquery-datepicker/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-03-28T08:01:16.000Z"><a href="/2013/03/28/sublime-indent-setting/">Mar 28 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/03/28/sublime-indent-setting/">Sublime indent setting</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>每次用Sublime在編輯coffee script或Jade的時候，常常會因為space跟tab的混雜造成compile error，所以在這邊筆記一下設定</p>
+<p>先到 Sublime找設定</p>
+<img src="http://farm9.staticflickr.com/8517/8596462677_2040cc0cbf.jpg" class="">
+
+<p>下面為要增加的設定</p>
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>{
+  "<span class="attribute">tab_size</span>":<span class="value"><span class="number">2</span></span>,
+  "<span class="attribute">translate_tabs_to_spaces</span>":<span class="value"><span class="literal">true</span>
+}</span>
+</pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/03/28/sublime-indent-setting/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-11-22T12:43:42.000Z"><a href="/2012/11/22/shasum/">Nov 22 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2012/11/22/shasum/">shasum</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>######################################################################## 100.0%
+
+-bash: shasum：命令找不到
+Checksums do not match.
+Binary download failed, trying source.
+Additional options while compiling: 
+
+######################################################################## 100.0% 
+</pre></td></tr></table></figure>
+幾次在CentOS用nvm安裝node.js都出現這個問題，來記錄一下，問題出在預設沒有shasum這個指令
+
+所以可以先下
+
+尋找一下到底要裝什麼
+結果
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre>  yum whatprovides '*bin/shasum'
+
+  Loaded plugins: fastestmirror, security
+  Loading mirror speeds from cached hostfile
+  * base: ftp.jaist.ac.jp
+  * epel: ftp.tsukuba.wide.ad.jp
+  * extras: ftp.jaist.ac.jp
+  * updates: ftp.jaist.ac.jp
+  1:perl-Digest-SHA-5.47-127.el6.x86_64 : Perl extension for SHA-1/224/256/384/512
+  Repo        : base
+  Matched from:
+  Filename    : /usr/bin/shasum
+</pre></td></tr></table></figure>
+
+
+<p>安裝完即可結案</p>
+
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2012/11/22/shasum/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2011-06-20T14:00:17.000Z"><a href="/2011/06/20/interieurs-cour/">Jun 20 2011</a></time>
       
       
@@ -396,9 +713,9 @@
   
     <li><a href="/tags/Javascript/">Javascript</a><small>3</small></li>
   
-    <li><a href="/tags/Linux/">Linux</a><small>6</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>7</small></li>
   
-    <li><a href="/tags/NoSQL/">NoSQL</a><small>1</small></li>
+    <li><a href="/tags/NoSQL/">NoSQL</a><small>2</small></li>
   
     <li><a href="/tags/Node.js/">Node.js</a><small>2</small></li>
   
@@ -406,7 +723,7 @@
   
     <li><a href="/tags/Travel/">Travel</a><small>5</small></li>
   
-    <li><a href="/tags/Ubuntu/">Ubuntu</a><small>2</small></li>
+    <li><a href="/tags/Ubuntu/">Ubuntu</a><small>3</small></li>
   
     <li><a href="/tags/Web-Design/">Web Design</a><small>1</small></li>
   
