@@ -53,6 +53,238 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-11-27T08:23:18.000Z"><a href="/2013/11/27/corona-sdk----global-variable/">Nov 27 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/11/27/corona-sdk----global-variable/">Corona SDK -  Global Variable</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>最近在使用Corona SDK的<em>StoryBoard</em>功能，因為想要Share一些資訊，比如Facebook的token，或個人資料等等，查了一下Global Variables</p>
+<p>在Corona裡，我們常用的宣告方法如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>    <span class="title">local</span> myvariable = <span class="number">10</span>
+</pre></td></tr></table></figure>
+
+<p>如果你想要宣告為Global，你可以把local拿掉，或者你可以使用_G.myvariable</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>    <span class="title">myvariable</span> = <span class="number">10</span>
+    _G.myvariable = <span class="number">10</span>
+</pre></td></tr></table></figure>
+
+<p>你也可以這樣測試</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="variable">_G</span>.my<span class="variable">Variable</span> = <span class="number">20</span>
+<span class="function"><span class="title">print</span><span class="params">( my<span class="variable">Variable</span> )</span>
+-- <span class="title">console</span> 會顯示20
+</pre></td></tr></table></figure>
+
+<p>如果想知道Global裡有哪些資訊，你可以把Table列舉出來</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="keyword">for</span> k,v <span class="keyword">in</span> <span class="built_in">pairs</span>( <span class="built_in">_G</span> ) <span class="keyword">do</span>
+   <span class="built_in">print</span>( k .. <span class="string">" =&gt; "</span>, v )
+<span class="keyword">end</span>
+</pre></td></tr></table></figure>
+
+<p>預設的結果</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+</pre></td><td class="code"><pre><span class="setting">_G =<span class="value">&gt; table: <span class="number">0</span>x10d510f90</span></span>
+<span class="setting">_VERSION =<span class="value">&gt; Lua <span class="number">5.1</span></span></span>
+<span class="setting">_credits_init =<span class="value">&gt; function: <span class="number">0</span>x108647cf0</span></span>
+<span class="setting">_network_pathForFile =<span class="value">&gt; function: <span class="number">0</span>x101394180</span></span>
+<span class="setting">al =<span class="value">&gt; table: <span class="number">0</span>x10868cc50</span></span>
+<span class="setting">assert =<span class="value">&gt; function: <span class="number">0</span>x10868f3a0</span></span>
+<span class="setting">audio =<span class="value">&gt; table: <span class="number">0</span>x108635da0</span></span>
+<span class="setting">collectgarbage =<span class="value">&gt; function: <span class="number">0</span>x10138e7f0</span></span>
+<span class="setting">coronabaselib =<span class="value">&gt; table: <span class="number">0</span>x10863b5f0</span></span>
+<span class="setting">coroutine =<span class="value">&gt; table: <span class="number">0</span>x1086903b0</span></span>
+<span class="setting">debug =<span class="value">&gt; table: <span class="number">0</span>x10136f730</span></span>
+<span class="setting">display =<span class="value">&gt; table: <span class="number">0</span>x1013eb150</span></span>
+<span class="setting">dofile =<span class="value">&gt; function: <span class="number">0</span>x10865e510</span></span>
+<span class="setting">easing =<span class="value">&gt; table: <span class="number">0</span>x10138b600</span></span>
+<span class="setting">error =<span class="value">&gt; function: <span class="number">0</span>x10865e540</span></span>
+<span class="setting">gcinfo =<span class="value">&gt; function: <span class="number">0</span>x10865e570</span></span>
+<span class="setting">getfenv =<span class="value">&gt; function: <span class="number">0</span>x1086a7f50</span></span>
+<span class="setting">getmetatable =<span class="value">&gt; function: <span class="number">0</span>x10134d250</span></span>
+<span class="setting">graphics =<span class="value">&gt; table: <span class="number">0</span>x108675420</span></span>
+<span class="setting">io =<span class="value">&gt; table: <span class="number">0</span>x1013ef390</span></span>
+<span class="setting">ipairs =<span class="value">&gt; function: <span class="number">0</span>x1013d2aa0</span></span>
+<span class="setting">load =<span class="value">&gt; function: <span class="number">0</span>x10868fc90</span></span>
+<span class="setting">loadfile =<span class="value">&gt; function: <span class="number">0</span>x10868fc30</span></span>
+<span class="setting">loadstring =<span class="value">&gt; function: <span class="number">0</span>x1086b2ab0</span></span>
+<span class="setting">lpeg =<span class="value">&gt; table: <span class="number">0</span>x10862c4d0</span></span>
+<span class="setting">math =<span class="value">&gt; table: <span class="number">0</span>x10864a840</span></span>
+<span class="setting">media =<span class="value">&gt; table: <span class="number">0</span>x1013d1a20</span></span>
+<span class="setting">metatable =<span class="value">&gt; table: <span class="number">0</span>x10868caf0</span></span>
+<span class="setting">module =<span class="value">&gt; function: <span class="number">0</span>x1013e0fd0</span></span>
+<span class="setting">native =<span class="value">&gt; table: <span class="number">0</span>x1086559b0</span></span>
+<span class="setting">network =<span class="value">&gt; table: <span class="number">0</span>x101393b40</span></span>
+<span class="setting">newproxy =<span class="value">&gt; function: <span class="number">0</span>x108617180</span></span>
+<span class="setting">next =<span class="value">&gt; function: <span class="number">0</span>x1013ec010</span></span>
+<span class="setting">os =<span class="value">&gt; table: <span class="number">0</span>x10131c900</span></span>
+<span class="setting">package =<span class="value">&gt; table: <span class="number">0</span>x10863fc10</span></span>
+<span class="setting">pairs =<span class="value">&gt; function: <span class="number">0</span>x1013d9870</span></span>
+<span class="setting">pcall =<span class="value">&gt; function: <span class="number">0</span>x1013ec040</span></span>
+<span class="setting">print =<span class="value">&gt; function: <span class="number">0</span>x10863b660</span></span>
+<span class="setting">rawequal =<span class="value">&gt; function: <span class="number">0</span>x1013c79a0</span></span>
+<span class="setting">rawget =<span class="value">&gt; function: <span class="number">0</span>x1013c7a00</span></span>
+<span class="setting">rawset =<span class="value">&gt; function: <span class="number">0</span>x1013e7ab0</span></span>
+<span class="setting">require =<span class="value">&gt; function: <span class="number">0</span>x10138fbc0</span></span>
+<span class="setting">select =<span class="value">&gt; function: <span class="number">0</span>x1013e7ae0</span></span>
+<span class="setting">setfenv =<span class="value">&gt; function: <span class="number">0</span>x1013e7b10</span></span>
+<span class="setting">setmetatable =<span class="value">&gt; function: <span class="number">0</span>x10134a3f0</span></span>
+<span class="setting">string =<span class="value">&gt; table: <span class="number">0</span>x101311df0</span></span>
+<span class="setting">system =<span class="value">&gt; table: <span class="number">0</span>x1013b2e60</span></span>
+<span class="setting">table =<span class="value">&gt; table: <span class="number">0</span>x1013ad550</span></span>
+<span class="setting">timer =<span class="value">&gt; table: <span class="number">0</span>x10138a550</span></span>
+<span class="setting">tonumber =<span class="value">&gt; function: <span class="number">0</span>x10134a450</span></span>
+<span class="setting">tostring =<span class="value">&gt; function: <span class="number">0</span>x1086067f0</span></span>
+<span class="setting">transition =<span class="value">&gt; table: <span class="number">0</span>x10138e000</span></span>
+<span class="setting">type =<span class="value">&gt; function: <span class="number">0</span>x10130ffb0</span></span>
+<span class="setting">unpack =<span class="value">&gt; function: <span class="number">0</span>x10130ffe0</span></span>
+<span class="setting">xpcall =<span class="value">&gt; function: <span class="number">0</span>x101310010</span></span>
+</pre></td></tr></table></figure>
+
+<p>但就跟Javascript一樣，使用Global variable來存東西是很危險的
+你可能會覆蓋到API裡的Global variable，或者大家如果都用Global variable是有可能彼此被覆蓋的而造成程式錯誤</p>
+<p>像如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="built_in">_G</span>.audio = <span class="keyword">true</span>  <span class="comment">--play audio if true, don't play if false</span>
+<span class="built_in">_G</span>.<span class="built_in">type</span> = <span class="string">"Gold"</span>
+<span class="built_in">_G</span>.timer = timer.performWithDelay( <span class="number">1000</span>, doSomething )
+</pre></td></tr></table></figure>
+
+<p>你的audio,timer就失效了</p>
+<p>所以訣竅就是</p>
+<h1>Don&#39;t use globals!</h1>
+<p>我們可以使用module的方式來實現variable的共享</p>
+<p>mydata.lua</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="comment">--my global space</span>
+<span class="keyword">local</span> M = {}
+<span class="keyword">return</span> M
+</pre></td></tr></table></figure>
+
+<p>require module在不同的view</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="keyword">local</span> myData = <span class="built_in">require</span>( <span class="string">"mydata"</span> )
+myData.myVariable = <span class="number">10</span>
+</pre></td></tr></table></figure>
+
+<p>你會發現不同view的修改myData的資料是會相通的。</p>
+<p>有人會想要在宣告function之前就用該function，所以才想用global variable，我們的建議是你應該先宣告該變數，之後再assign該變數即可</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>local doSomething  --forward declaration
+
+local <span class="function"><span class="keyword">function</span> <span class="title">makeSomethingHappen</span><span class="params">()</span>
+   <span class="title">local</span> <span class="title">fred</span> = 10
+   <span class="title">doSomething</span><span class="params">( fred )</span>
+<span class="title">end</span>
+
+<span class="title">doSomething</span> = <span class="title">function</span><span class="params">( param )</span>
+   <span class="title">print</span><span class="params">( param )</span>
+<span class="title">end</span>
+</pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/11/27/corona-sdk----global-variable/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-07-23T10:31:16.000Z"><a href="/2013/07/23/leapmotion-open/">Jul 23 2013</a></time>
       
       
@@ -208,87 +440,6 @@ sudo stop nginx
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-05-31T03:34:07.000Z"><a href="/2013/05/31/upstart-setting-for-redis-on-ubuntu/">May 31 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/05/31/upstart-setting-for-redis-on-ubuntu/">Upstart setting for Redis on ubuntu</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>這邊記錄安裝Redis的過程</p>
-<p>在ubuntu安裝Reids蠻簡單的</p>
-<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>sudo apt-get install redis-server
-</pre></td></tr></table></figure>
-
-<p>但裝完後，我還想把它改成用upstart的方式啓動</p>
-<p>先把原來的啓動模式取消，停掉預設的init.d script </p>
-<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>sudo update-rc.d redis-server disable
-</pre></td></tr></table></figure>
-
-
-
-<p>/etc/redis/redis.conf</p>
-<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>daemonize no
-</pre></td></tr></table></figure>
-
-<p>建立upstart的啓動script
-/etc/init/redis-server.conf</p>
-<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-</pre></td><td class="code"><pre>description "redis server"
-
-start on runlevel [23]
-stop on shutdown
-
-exec sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf
-
-respawn
-</pre></td></tr></table></figure>
-
-<p>再來就可以用upstart啟動了</p>
-<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre>sudo start redis-server
-sudo restart redis-server
-sudo stop redis-server
-</pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/05/31/upstart-setting-for-redis-on-ubuntu/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
         <time datetime="2013-05-31T03:34:07.000Z"><a href="/2013/05/31/redis-on-ubuntu/">May 31 2013</a></time>
       
       
@@ -370,6 +521,87 @@ sudo stop redis-server
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-05-31T03:34:07.000Z"><a href="/2013/05/31/upstart-setting-for-redis-on-ubuntu/">May 31 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/05/31/upstart-setting-for-redis-on-ubuntu/">Upstart setting for Redis on ubuntu</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>這邊記錄安裝Redis的過程</p>
+<p>在ubuntu安裝Reids蠻簡單的</p>
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>sudo apt-get install redis-server
+</pre></td></tr></table></figure>
+
+<p>但裝完後，我還想把它改成用upstart的方式啓動</p>
+<p>先把原來的啓動模式取消，停掉預設的init.d script </p>
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>sudo update-rc.d redis-server disable
+</pre></td></tr></table></figure>
+
+
+
+<p>/etc/redis/redis.conf</p>
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>daemonize no
+</pre></td></tr></table></figure>
+
+<p>建立upstart的啓動script
+/etc/init/redis-server.conf</p>
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>description "redis server"
+
+start on runlevel [23]
+stop on shutdown
+
+exec sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf
+
+respawn
+</pre></td></tr></table></figure>
+
+<p>再來就可以用upstart啟動了</p>
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>sudo start redis-server
+sudo restart redis-server
+sudo stop redis-server
+</pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/05/31/upstart-setting-for-redis-on-ubuntu/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-05-30T10:12:33.000Z"><a href="/2013/05/30/node.js-on-ubuntu/">May 30 2013</a></time>
       
       
@@ -400,73 +632,6 @@ sudo apt-get install nodejs
         
           <div class="alignleft">
             <a href="/2013/05/30/node.js-on-ubuntu/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-05-27T11:30:06.000Z"><a href="/2013/05/27/font/">May 27 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/05/27/font/">font</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Blackletter(Gothic)
-12 世紀的法國東北部和荷比盧地區，並稍後傳入德國</p>
-<p>  Textualis
-  Textur
-  Rotunda
-  Schwabacher
-  Fraktur</p>
-<p>裝飾性大於可讀性</p>
-<p>Serif（Roman）
-  Antiqua
-  Baskerville
-  Times New Roman
-  Georgia 
-Slab Serif （比較粗的Serif）
-  Bodoni
-  Egyptienne
-  Karnak
-  Cairo
-  Courier-&gt;打字機，因容易磨損，一樣寬
-Sans Serif （沒襯線，但極簡）
-  Folio
-  Helvetica
-  Univers
-  分類
-    Grotesque
-    Neo-grotesque-線條寬度最均一
-      Arial
-    Humanist-線條寬度最有變化
-    Geometric-幾何圖形為主體
-Script(書寫體或手書體)
-  George Bickham、George Shelly、George Snell
-Casual Script(模擬原子筆)</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/05/27/font/#more" class="more-link">Read More</a>
           </div>
         
         
@@ -654,7 +819,7 @@ console.log obj2.name #4
     </header>
     <div class="entry">
       
-        <figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+        <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -665,17 +830,17 @@ console.log obj2.name #4
 9
 10
 11
-</pre></td><td class="code"><pre>module_function = do -&gt;
-  hidden = 0  #hidden value, you can't access it directly
+</pre></td><td class="code"><pre>module_function = do -&gt<span class="comment">;</span>
+  hidden = <span class="number">0</span>  <span class="preprocessor">#hidden value, you can't access it directly</span>
   {
-    add:-&gt;
+    <span class="keyword">add</span>:-&gt<span class="comment">;</span>
       hidden++
-      console.log hidden
+      console<span class="preprocessor">.log</span> hidden
   }
 
-module_function.add() # 1
-module_function.add() # 2
-module_function.add() # 3
+module_function<span class="preprocessor">.add</span>() <span class="preprocessor"># 1</span>
+module_function<span class="preprocessor">.add</span>() <span class="preprocessor"># 2</span>
+module_function<span class="preprocessor">.add</span>() <span class="preprocessor"># 3</span>
 </pre></td></tr></table></figure>
       
     </div>
@@ -723,6 +888,8 @@ module_function.add() # 3
   
     <li><a href="/tags/CoffeeScript/">CoffeeScript</a><small>2</small></li>
   
+    <li><a href="/tags/Corona-SDK/">Corona SDK</a><small>1</small></li>
+  
     <li><a href="/tags/Design-Pattern/">Design Pattern</a><small>2</small></li>
   
     <li><a href="/tags/Editor/">Editor</a><small>1</small></li>
@@ -736,6 +903,8 @@ module_function.add() # 3
     <li><a href="/tags/Javascript/">Javascript</a><small>3</small></li>
   
     <li><a href="/tags/Linux/">Linux</a><small>7</small></li>
+  
+    <li><a href="/tags/Lua/">Lua</a><small>1</small></li>
   
     <li><a href="/tags/NoSQL/">NoSQL</a><small>2</small></li>
   

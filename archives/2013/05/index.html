@@ -148,87 +148,6 @@ sudo stop nginx
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-05-31T03:34:07.000Z"><a href="/2013/05/31/upstart-setting-for-redis-on-ubuntu/">May 31 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/05/31/upstart-setting-for-redis-on-ubuntu/">Upstart setting for Redis on ubuntu</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>這邊記錄安裝Redis的過程</p>
-<p>在ubuntu安裝Reids蠻簡單的</p>
-<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>sudo apt-get install redis-server
-</pre></td></tr></table></figure>
-
-<p>但裝完後，我還想把它改成用upstart的方式啓動</p>
-<p>先把原來的啓動模式取消，停掉預設的init.d script </p>
-<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>sudo update-rc.d redis-server disable
-</pre></td></tr></table></figure>
-
-
-
-<p>/etc/redis/redis.conf</p>
-<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>daemonize no
-</pre></td></tr></table></figure>
-
-<p>建立upstart的啓動script
-/etc/init/redis-server.conf</p>
-<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-</pre></td><td class="code"><pre>description "redis server"
-
-start on runlevel [23]
-stop on shutdown
-
-exec sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf
-
-respawn
-</pre></td></tr></table></figure>
-
-<p>再來就可以用upstart啟動了</p>
-<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre>sudo start redis-server
-sudo restart redis-server
-sudo stop redis-server
-</pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/05/31/upstart-setting-for-redis-on-ubuntu/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
         <time datetime="2013-05-31T03:34:07.000Z"><a href="/2013/05/31/redis-on-ubuntu/">May 31 2013</a></time>
       
       
@@ -310,6 +229,87 @@ sudo stop redis-server
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-05-31T03:34:07.000Z"><a href="/2013/05/31/upstart-setting-for-redis-on-ubuntu/">May 31 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/05/31/upstart-setting-for-redis-on-ubuntu/">Upstart setting for Redis on ubuntu</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>這邊記錄安裝Redis的過程</p>
+<p>在ubuntu安裝Reids蠻簡單的</p>
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>sudo apt-get install redis-server
+</pre></td></tr></table></figure>
+
+<p>但裝完後，我還想把它改成用upstart的方式啓動</p>
+<p>先把原來的啓動模式取消，停掉預設的init.d script </p>
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>sudo update-rc.d redis-server disable
+</pre></td></tr></table></figure>
+
+
+
+<p>/etc/redis/redis.conf</p>
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>daemonize no
+</pre></td></tr></table></figure>
+
+<p>建立upstart的啓動script
+/etc/init/redis-server.conf</p>
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>description "redis server"
+
+start on runlevel [23]
+stop on shutdown
+
+exec sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf
+
+respawn
+</pre></td></tr></table></figure>
+
+<p>再來就可以用upstart啟動了</p>
+<figure class="highlight lang-json"><figcaption><span>setting </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>sudo start redis-server
+sudo restart redis-server
+sudo stop redis-server
+</pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/05/31/upstart-setting-for-redis-on-ubuntu/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-05-30T10:12:33.000Z"><a href="/2013/05/30/node.js-on-ubuntu/">May 30 2013</a></time>
       
       
@@ -351,73 +351,6 @@ sudo apt-get install nodejs
 
 
   
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-05-27T11:30:06.000Z"><a href="/2013/05/27/font/">May 27 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/05/27/font/">font</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Blackletter(Gothic)
-12 世紀的法國東北部和荷比盧地區，並稍後傳入德國</p>
-<p>  Textualis
-  Textur
-  Rotunda
-  Schwabacher
-  Fraktur</p>
-<p>裝飾性大於可讀性</p>
-<p>Serif（Roman）
-  Antiqua
-  Baskerville
-  Times New Roman
-  Georgia 
-Slab Serif （比較粗的Serif）
-  Bodoni
-  Egyptienne
-  Karnak
-  Cairo
-  Courier-&gt;打字機，因容易磨損，一樣寬
-Sans Serif （沒襯線，但極簡）
-  Folio
-  Helvetica
-  Univers
-  分類
-    Grotesque
-    Neo-grotesque-線條寬度最均一
-      Arial
-    Humanist-線條寬度最有變化
-    Geometric-幾何圖形為主體
-Script(書寫體或手書體)
-  George Bickham、George Shelly、George Snell
-Casual Script(模擬原子筆)</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/05/27/font/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
 
   <nav id="pagination">
   
@@ -444,6 +377,8 @@ Casual Script(模擬原子筆)</p>
   
     <li><a href="/tags/CoffeeScript/">CoffeeScript</a><small>2</small></li>
   
+    <li><a href="/tags/Corona-SDK/">Corona SDK</a><small>1</small></li>
+  
     <li><a href="/tags/Design-Pattern/">Design Pattern</a><small>2</small></li>
   
     <li><a href="/tags/Editor/">Editor</a><small>1</small></li>
@@ -457,6 +392,8 @@ Casual Script(模擬原子筆)</p>
     <li><a href="/tags/Javascript/">Javascript</a><small>3</small></li>
   
     <li><a href="/tags/Linux/">Linux</a><small>7</small></li>
+  
+    <li><a href="/tags/Lua/">Lua</a><small>1</small></li>
   
     <li><a href="/tags/NoSQL/">NoSQL</a><small>2</small></li>
   
